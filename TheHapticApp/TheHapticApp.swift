@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct TheHapticApp: App {
+    @StateObject private var hapticEffects: HapticEngine = HapticEngine()
+
     var body: some Scene {
         WindowGroup {
-            HapticGrid()
-                .gridDimensions(15, 15)
+            MainView()
+                .environmentObject(hapticEffects)
         }
     }
 }

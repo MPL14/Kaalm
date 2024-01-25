@@ -32,6 +32,9 @@ struct ContentView: View {
                                     .padding(2) //Padding for the dots
                                     .opacity(self.touchedCircles[row][column] ? 0.0 : 1.0)
                                     .animation(.easeOut(duration: 0.5), value: self.touchedCircles[row][column])
+                                    .onTapGesture {
+                                        print(row, column)
+                                    }
                             }
 
                             Spacer()
@@ -43,12 +46,15 @@ struct ContentView: View {
                 .gesture(
                     DragGesture(minimumDistance: 0)
                         .onChanged({ value in
+                            print(value.location, geometry.size)
                             let x = Int(value.location.x / (geometry.size.width / 16))
                             let y = Int(value.location.y / (geometry.size.height / 16))
 
                             if x >= 0 && x < 16 && y >= 0 && y < 16 {
                                 self.haptic.impactOccurred()
-                                self.touchedCircles[y][x] = true
+
+                                    self.touchedCircles[y][x] = true
+
 
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     withAnimation(.easeOut(duration: 0.5)) {

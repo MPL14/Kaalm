@@ -10,7 +10,7 @@ import SwiftUI
 
 /// A class for playing haptics. Using a class allows to create only one
 /// haptic engine for the whole app.
-final class HapticEngine: ObservableObject {
+final class HapticEngine: HapticPlaying, ObservableObject {
     // MARK: - Properties
     private var hapticEngine: CHHapticEngine?
 
