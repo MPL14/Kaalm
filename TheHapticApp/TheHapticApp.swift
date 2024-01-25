@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct TheHapticAppApp: App {
+struct TheHapticApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HapticGrid()
+                .gridDimensions(15, 15)
         }
     }
 }
