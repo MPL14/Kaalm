@@ -30,7 +30,7 @@ struct HapticGrid<H: HapticPlaying>: View {
                 HStack {
                     ForEach(0..<gridDim.1, id: \.self) { column in
                         Circle()
-                            .fill(touchedCircles[row][column] ? Color.random : Color.black)
+                            .fill(touchedCircles[row][column] ? Color.random : .primary)
                             .frame(width: dotSize, height: dotSize)
                             .padding(dotPaddingEdges, dotPadding)
                             .opacity(touchedCircles[row][column] ? 0.0 : 1.0)

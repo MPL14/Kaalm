@@ -20,6 +20,7 @@
 		441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B12B62BB2200CF4DFF /* MainView.swift */; };
 		441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */; };
 		441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B72B62D87900CF4DFF /* HapticPlaying.swift */; };
+		44BB04352B62E1E600865B00 /* SwipeToUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB04342B62E1E600865B00 /* SwipeToUnlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		441B21B12B62BB2200CF4DFF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extensions.swift"; sourceTree = "<group>"; };
 		441B21B72B62D87900CF4DFF /* HapticPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPlaying.swift; sourceTree = "<group>"; };
+		44BB04342B62E1E600865B00 /* SwipeToUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToUnlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,13 +73,13 @@
 			children = (
 				441B21962B62332300CF4DFF /* TheHapticApp.swift */,
 				441B21B62B62D75E00CF4DFF /* Views */,
+				441B21A42B6233E900CF4DFF /* Effects */,
 				441B21B32B62BB7100CF4DFF /* Extensions */,
 				441B219A2B62332400CF4DFF /* Assets.xcassets */,
 				441B219C2B62332400CF4DFF /* Preview Content */,
 				441B21AB2B62BA6300CF4DFF /* ContentView.swift */,
 				441B21AD2B62BA9400CF4DFF /* DirectionsView.swift */,
 				441B21AF2B62BAC800CF4DFF /* SplashScreenView.swift */,
-				441B21A42B6233E900CF4DFF /* Effects */,
 			);
 			path = TheHapticApp;
 			sourceTree = "<group>";
@@ -114,6 +116,7 @@
 			children = (
 				441B21B12B62BB2200CF4DFF /* MainView.swift */,
 				441B21982B62332300CF4DFF /* HapticGrid.swift */,
+				44BB04342B62E1E600865B00 /* SwipeToUnlock.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */,
 				441B21A62B62340000CF4DFF /* HapticEngine.swift in Sources */,
 				441B21AE2B62BA9400CF4DFF /* DirectionsView.swift in Sources */,
+				44BB04352B62E1E600865B00 /* SwipeToUnlock.swift in Sources */,
 				441B21AC2B62BA6300CF4DFF /* ContentView.swift in Sources */,
 				441B21972B62332300CF4DFF /* TheHapticApp.swift in Sources */,
 				441B21B02B62BAC800CF4DFF /* SplashScreenView.swift in Sources */,
