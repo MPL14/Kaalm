@@ -32,7 +32,7 @@ struct HapticGrid<H: HapticPlaying>: View {
     private var dotPaddingEdges: Edge.Set = .all
     private var dotPadding: CGFloat = 0
 
-    private var colorAnimationDuration: CGFloat = 0.5
+    private var colorAnimationDuration: CGFloat = 2
 
     // MARK: - View
     var body: some View {
@@ -44,7 +44,7 @@ struct HapticGrid<H: HapticPlaying>: View {
                             .fill(touchedCircles[row][column] ? Color.random : .primary)
                             .frame(width: dotSize, height: dotSize)
                             .padding(dotPaddingEdges, dotPadding)
-                            .opacity(touchedCircles[row][column] ? 0.0 : 1.0)
+//                            .opacity(touchedCircles[row][column] ? 0.0 : 1.0)
                     }
                 }
             }
