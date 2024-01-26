@@ -82,7 +82,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// play a haptic based on the input haptic type.
     public func playHaptic(_ hapticType: HapticType) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            print("The device does not support haptics.")
+//            print("The device does not support haptics.")
             return
         }
 

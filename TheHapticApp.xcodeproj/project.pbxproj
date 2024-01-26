@@ -20,8 +20,11 @@
 		441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B12B62BB2200CF4DFF /* MainView.swift */; };
 		441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */; };
 		441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B72B62D87900CF4DFF /* HapticPlaying.swift */; };
+		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
+		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
+		4465D2B52B641B4A00BD0B01 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B42B641B4A00BD0B01 /* TitleView.swift */; };
 		44BB04372B63169600865B00 /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB04362B63169600865B00 /* RubberBanding.swift */; };
-		44BB043B2B631B0E00865B00 /* NewSwipeToUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB043A2B631B0E00865B00 /* NewSwipeToUnlock.swift */; };
+		44BB043B2B631B0E00865B00 /* SwipeToUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +42,11 @@
 		441B21B12B62BB2200CF4DFF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extensions.swift"; sourceTree = "<group>"; };
 		441B21B72B62D87900CF4DFF /* HapticPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPlaying.swift; sourceTree = "<group>"; };
+		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		4465D2B22B64139F00BD0B01 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
+		4465D2B42B641B4A00BD0B01 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		44BB04362B63169600865B00 /* RubberBanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
-		44BB043A2B631B0E00865B00 /* NewSwipeToUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSwipeToUnlock.swift; sourceTree = "<group>"; };
+		44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToUnlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,7 @@
 			children = (
 				441B21962B62332300CF4DFF /* TheHapticApp.swift */,
 				441B21B62B62D75E00CF4DFF /* Views */,
+				4465D2AF2B64092200BD0B01 /* Subviews */,
 				441B21A42B6233E900CF4DFF /* Effects */,
 				441B21B32B62BB7100CF4DFF /* Extensions */,
 				441B219A2B62332400CF4DFF /* Assets.xcassets */,
@@ -102,6 +109,7 @@
 				441B21A92B62345900CF4DFF /* HapticType.swift */,
 				441B21B72B62D87900CF4DFF /* HapticPlaying.swift */,
 				44BB04362B63169600865B00 /* RubberBanding.swift */,
+				4465D2B22B64139F00BD0B01 /* Shimmer.swift */,
 			);
 			path = Effects;
 			sourceTree = "<group>";
@@ -118,10 +126,19 @@
 			isa = PBXGroup;
 			children = (
 				441B21B12B62BB2200CF4DFF /* MainView.swift */,
-				441B21982B62332300CF4DFF /* HapticGrid.swift */,
-				44BB043A2B631B0E00865B00 /* NewSwipeToUnlock.swift */,
+				4465D2B02B64093300BD0B01 /* OnboardingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4465D2AF2B64092200BD0B01 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				441B21982B62332300CF4DFF /* HapticGrid.swift */,
+				44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */,
+				4465D2B42B641B4A00BD0B01 /* TitleView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,19 +211,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44BB043B2B631B0E00865B00 /* NewSwipeToUnlock.swift in Sources */,
+				44BB043B2B631B0E00865B00 /* SwipeToUnlock.swift in Sources */,
 				441B21992B62332300CF4DFF /* HapticGrid.swift in Sources */,
 				441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */,
 				441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */,
 				441B21A62B62340000CF4DFF /* HapticEngine.swift in Sources */,
 				441B21AE2B62BA9400CF4DFF /* DirectionsView.swift in Sources */,
 				441B21AC2B62BA6300CF4DFF /* ContentView.swift in Sources */,
+				4465D2B52B641B4A00BD0B01 /* TitleView.swift in Sources */,
 				441B21972B62332300CF4DFF /* TheHapticApp.swift in Sources */,
 				441B21B02B62BAC800CF4DFF /* SplashScreenView.swift in Sources */,
 				441B21AA2B62345900CF4DFF /* HapticType.swift in Sources */,
 				441B21A82B62342C00CF4DFF /* HapticEvents.swift in Sources */,
 				44BB04372B63169600865B00 /* RubberBanding.swift in Sources */,
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
+				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
+				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +363,7 @@
 				DEVELOPMENT_TEAM = E24P6RF94S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Haptic App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -377,6 +398,7 @@
 				DEVELOPMENT_TEAM = E24P6RF94S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "The Haptic App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

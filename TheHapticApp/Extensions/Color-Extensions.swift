@@ -8,6 +8,7 @@
 import SwiftUI
 
 extension Color {
+    /// Initialize a random Color.
     static var random: Color {
         return .init(red: .random(in: 0...1),
                      green: .random(in: 0...1),

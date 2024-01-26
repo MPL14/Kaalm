@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct MainView: View {
+    // MARK: - Environment
     @EnvironmentObject private var hapticEngine: HapticEngine
 
-    @State private var gridRows = 10.0
-    @State private var gridCols: Int = 10
+    // MARK: - State
+    @State private var gridRows: CGFloat = 16.0
+    @State private var gridCols: CGFloat = 16.0
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
                 HapticGrid<HapticEngine>()
-                    .gridDimensions(Int(gridRows), gridCols)
+                    .gridDimensions(Int(gridRows), Int(gridCols))
 
-                Slider(value: $gridRows, in: 1...15)
-
-                SwipeToUnlock<HapticEngine>()
+                Slider(value: $gridRows, in: 5...20)
             }
             .toolbar {
                 toolbarView
@@ -30,19 +30,19 @@ struct MainView: View {
         .environmentObject(hapticEngine)
     }
 
+    // MARK: - Subviews
     private var toolbarView: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
-                Text("The Haptic App")
-                    .font(.system(.largeTitle, weight: .heavy))
+                TitleView()
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    print("Go to Settings")
+                    print("Go to Personalization")
                 } label: {
-                    Image(systemName: "gear")
-                        .font(.system(size: 16, weight: .heavy))
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 24, weight: .semibold))
                         .tint(.primary)
                 }
             }
