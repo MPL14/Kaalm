@@ -55,7 +55,7 @@ struct HapticGrid<H: HapticPlaying>: View {
 
                     guard x >= 0, x < gridDim.1, y >= 0, y < gridDim.0 else { return }
 
-                    hapticEngine.playHaptic(.longPressSuccess)
+                    hapticEngine.playHaptic(.swipeSuccess)
 
                     withAnimation(.easeOut(duration: 0.5)) {
                         touchedCircles[y][x] = true

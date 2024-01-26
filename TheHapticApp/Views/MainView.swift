@@ -15,11 +15,13 @@ struct MainView: View {
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 30) {
                 HapticGrid<HapticEngine>()
                     .gridDimensions(Int(gridRows), gridCols)
 
                 Slider(value: $gridRows, in: 1...15)
+
+                SwipeToUnlock<HapticEngine>()
             }
             .toolbar {
                 toolbarView
