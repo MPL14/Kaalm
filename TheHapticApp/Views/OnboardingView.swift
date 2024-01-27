@@ -16,6 +16,9 @@ struct OnboardingView: View {
 
     var body: some View {
         ZStack {
+            Color.white
+                .ignoresSafeArea()
+            
             RadialGradient(
                 colors: [.black.opacity(0.8), .black],
                 center: .topLeading,
