@@ -18,7 +18,7 @@ struct HapticDotPreferenceData: Equatable, Hashable {
 
     // Equatable conformance.
     static func == (lhs: HapticDotPreferenceData, rhs: HapticDotPreferenceData) -> Bool {
-        // Compare the x and y indices and return false if either aren't equal.
+        // Compare the x and y indices and the bounds for the lhs and rhs.
         return lhs.gridPoint.x == rhs.gridPoint.x && lhs.gridPoint.y == rhs.gridPoint.y && lhs.bounds == rhs.bounds
     }
 }

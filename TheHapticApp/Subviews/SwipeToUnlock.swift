@@ -27,7 +27,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
 
     private var dotSize: CGFloat = 6
     private var dotPaddingEdges: Edge.Set = .all
-    private var dotPadding: CGFloat = -6
+    private var dotPadding: CGFloat = 1
 
     init(_ unlocked: Binding<Bool>) {
         self._unlocked = unlocked
@@ -35,9 +35,9 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
 
     // MARK: - View
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(0..<gridDim.0, id: \.self) { row in
-                HStack {
+                HStack(spacing: 0) {
                     ForEach(0..<gridDim.1, id: \.self) { column in
                         Circle()
                             .fill(column >= sliderOffset && column < sliderOffset + sliderWidth ? Color.gray : Color.white)
@@ -139,7 +139,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                            _ length: CGFloat? = nil) -> SwipeToUnlock {
         var view = self
         view.dotPaddingEdges = edges
-        view.dotPadding = length ?? 0
+        view.dotPadding = length ?? 5
         return view
     }
 
@@ -148,7 +148,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
     public func dotPadding(_ length: CGFloat? = nil) -> SwipeToUnlock {
         var view = self
         view.dotPaddingEdges = .all
-        view.dotPadding = length ?? 0
+        view.dotPadding = length ?? 5
         return view
     }
 }

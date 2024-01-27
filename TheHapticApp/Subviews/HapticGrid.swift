@@ -44,7 +44,7 @@ struct HapticGrid<H: HapticPlaying>: View {
                             .fill(touchedCircles[row][column] ? Color.random : .primary)
                             .frame(width: dotSize, height: dotSize)
                             .padding(dotPaddingEdges, dotPadding)
-//                            .opacity(touchedCircles[row][column] ? 0.0 : 1.0)
+                            .opacity(touchedCircles[row][column] ? 0.0 : 1.0)
                     }
                 }
             }

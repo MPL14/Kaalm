@@ -63,7 +63,11 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                 .onChanged { dragValue in
                     if let touchedDotData = hapticDotData.first(where: { $0.bounds.contains(dragValue.location) }) {
                         print("touched \(touchedDotData.gridPoint)")
-                        
+
+                        // Don't perform the animation and stuff if this haptic dot
+                        // is still in touchedGridPoints, i.e. slow drag.
+                        guard !touchedGridPoints.contains(touchedDotData.gridPoint) else { return }
+
                         touchedGridPoints.insert(touchedDotData.gridPoint)
 
                         print(touchedGridPoints.count)

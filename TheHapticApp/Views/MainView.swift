@@ -15,23 +15,23 @@ struct MainView: View {
     @State private var gridRows: CGFloat = 16.0
     @State private var gridCols: CGFloat = 16.0
 
+    @AppStorage("gridRows") var currentGridRows: Double = 16.0
+    @AppStorage("gridCols") var currentGridCols: Double = 16.0
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
 //                HapticGrid<HapticEngine>()
 //                    .gridDimensions(Int(gridRows), Int(gridCols))
                 BetterHapticGrid<HapticEngine>()
-                    .gridDimensions(Int(gridRows), Int(gridCols))
+                    .gridDimensions(Int(currentGridRows), Int(currentGridCols))
                     .dotSize(10)
                     .dotPadding()
-
-                Slider(value: $gridRows, in: 5...20)
-                Slider(value: $gridCols, in: 5...20)
             }
             .toolbar {
                 toolbarView
             }
         }
+        .tint(.primary)
         .environmentObject(hapticEngine)
     }
 
@@ -43,13 +43,14 @@ struct MainView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    print("Go to Personalization")
-                } label: {
-                    Image(systemName: "person.circle")
-                        .font(.system(size: 24, weight: .semibold))
-                        .tint(.primary)
-                }
+                    NavigationLink {
+                        ProfileView()
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .font(.system(size: 24, weight: .semibold))
+                            .tint(.primary)
+                    }
+
             }
         }
     }

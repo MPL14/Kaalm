@@ -12,11 +12,16 @@ struct OnboardingView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
-    @State private var onboardingComplete: Bool = false
+    @AppStorage("onboardingComplete") var onboardingComplete: Bool = false
 
     var body: some View {
         ZStack {
-            Color.black
+            RadialGradient(
+                colors: [.black.opacity(0.8), .black],
+                center: .topLeading,
+                startRadius: 0.2,
+                endRadius: UIScreen.main.bounds.height
+            )
                 .ignoresSafeArea()
             VStack(spacing: 10) {
                 TitleView()
@@ -24,14 +29,11 @@ struct OnboardingView: View {
 
                 Text("Calm through haptics.")
                     .foregroundStyle(.white)
-
-//                Text("Onboarding Complete: \(onboardingComplete.description)")
-//                    .foregroundStyle(.white)
             }
             .frame(maxHeight: .infinity)
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 15) {
-                    SwipeToUnlock<HapticEngine>($onboardingComplete)
+                    swipeToUnlock
 
                     swipeToUnlockText
                 }
@@ -40,6 +42,13 @@ struct OnboardingView: View {
     }
 
     // MARK: - Subviews
+    private var swipeToUnlock: some View {
+        SwipeToUnlock<HapticEngine>($onboardingComplete)
+            .gridDimensions(6, 45)
+            .sliderWidth(6)
+            .dotPadding(0.8)
+    }
+
     private var swipeToUnlockText: some View {
         Text("Swipe to Open")
             .font(.headline)
