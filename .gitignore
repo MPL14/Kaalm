@@ -50,4 +50,5 @@ playground.xcworkspace
 # Secrets
 Config.xcconfig
 Secrets.swift
+RCApiKey.swift
 

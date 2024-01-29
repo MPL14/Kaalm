@@ -26,6 +26,7 @@
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
 		4450CA122B6850B9008093B6 /* PurchasesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA112B6850B9008093B6 /* PurchasesModel.swift */; };
+		4450CA182B685652008093B6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA172B685652008093B6 /* Secrets.swift */; };
 		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
 		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
 		4465D2B52B641B4A00BD0B01 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B42B641B4A00BD0B01 /* TitleView.swift */; };
@@ -60,6 +61,7 @@
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4450CA112B6850B9008093B6 /* PurchasesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesModel.swift; sourceTree = "<group>"; };
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4450CA172B685652008093B6 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4465D2B22B64139F00BD0B01 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		4465D2B42B641B4A00BD0B01 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				441B21AB2B62BA6300CF4DFF /* ContentView.swift */,
 				441B21AD2B62BA9400CF4DFF /* DirectionsView.swift */,
 				441B21AF2B62BAC800CF4DFF /* SplashScreenView.swift */,
+				4450CA172B685652008093B6 /* Secrets.swift */,
 			);
 			path = TheHapticApp;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				4465D2B52B641B4A00BD0B01 /* TitleView.swift in Sources */,
 				441B21972B62332300CF4DFF /* TheHapticApp.swift in Sources */,
 				441B21B02B62BAC800CF4DFF /* SplashScreenView.swift in Sources */,
+				4450CA182B685652008093B6 /* Secrets.swift in Sources */,
 				441B21AA2B62345900CF4DFF /* HapticType.swift in Sources */,
 				441B21A82B62342C00CF4DFF /* HapticEvents.swift in Sources */,
 				44BB04372B63169600865B00 /* RubberBanding.swift in Sources */,

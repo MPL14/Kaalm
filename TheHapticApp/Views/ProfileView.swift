@@ -5,6 +5,8 @@
 //  Created by Giorgio Latour on 1/26/24.
 //
 
+import RevenueCat
+import RevenueCatUI
 import SwiftUI
 
 struct ProfileView: View {
@@ -55,8 +57,8 @@ struct ProfileView: View {
                 }
             }
             .tint(Color("Default"))
-            .disabled(false)
         }
+        .presentPaywallIfNeeded(requiredEntitlementIdentifier: "premium_lifetime")
     }
 }
 
