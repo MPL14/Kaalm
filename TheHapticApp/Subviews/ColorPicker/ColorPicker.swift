@@ -32,7 +32,7 @@ struct CustomColorPicker<ColorShape: Shape>: View {
                             colorShape
                                 .scale(1.3)
                                 .stroke(style: .init(lineWidth: 2))
-                                .fill(.black)
+                                .fill(highlightColor)
                         }
                     }
                     .onTapGesture {

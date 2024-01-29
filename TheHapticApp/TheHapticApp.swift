@@ -5,10 +5,13 @@
 //  Created by Giorgio Latour on 1/25/24.
 //
 
+import RevenueCat
 import SwiftUI
 
 @main
 struct TheHapticApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     @StateObject private var hapticEffects: HapticEngine = HapticEngine()
     
     @AppStorage("onboardingComplete") var onboardingComplete: Bool = false
@@ -30,3 +33,15 @@ struct TheHapticApp: App {
         }
     }
 } 
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+//        Purchases.logLevel = .debug
+//        Purchases.configure(withAPIKey: , appUserID: )
+
+        return true
+    }
+}
