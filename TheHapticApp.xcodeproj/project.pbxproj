@@ -59,6 +59,7 @@
 		4450CA062B684E84008093B6 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../Downloads/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4450CA112B6850B9008093B6 /* PurchasesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesModel.swift; sourceTree = "<group>"; };
+		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4465D2B22B64139F00BD0B01 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		4465D2B42B641B4A00BD0B01 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -109,6 +110,7 @@
 		441B21952B62332300CF4DFF /* TheHapticApp */ = {
 			isa = PBXGroup;
 			children = (
+				4450CA152B6854AA008093B6 /* Info.plist */,
 				441B21962B62332300CF4DFF /* TheHapticApp.swift */,
 				441B21B62B62D75E00CF4DFF /* Views */,
 				4450CA102B6850A6008093B6 /* Models */,
@@ -450,6 +452,7 @@
 				DEVELOPMENT_TEAM = E24P6RF94S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TheHapticApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Haptic App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -485,6 +488,7 @@
 				DEVELOPMENT_TEAM = E24P6RF94S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TheHapticApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "The Haptic App";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
