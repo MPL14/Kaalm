@@ -12,20 +12,20 @@ struct OnboardingView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
-    @AppStorage("onboardingComplete") var onboardingComplete: Bool = false
+    @AppStorage("onboardingComplete") private var onboardingComplete: Bool = false
 
     var body: some View {
         ZStack {
             Color.white
                 .ignoresSafeArea()
-            
+
             RadialGradient(
                 colors: [.black.opacity(0.8), .black],
                 center: .topLeading,
                 startRadius: 0.2,
                 endRadius: UIScreen.main.bounds.height
             )
-                .ignoresSafeArea()
+            .ignoresSafeArea()
             VStack(spacing: 10) {
                 TitleView()
                     .foregroundStyle(.white)
@@ -46,10 +46,14 @@ struct OnboardingView: View {
 
     // MARK: - Subviews
     private var swipeToUnlock: some View {
-        SwipeToUnlock<HapticEngine>($onboardingComplete)
-            .gridDimensions(6, 50)
-            .sliderWidth(7)
-            .dotPadding(0.4)
+        SwipeToUnlock<HapticEngine> {
+            withAnimation {
+                self.onboardingComplete = true
+            }
+        }
+        .gridDimensions(6, 50)
+        .sliderWidth(7)
+        .dotPadding(0.4)
     }
 
     private var swipeToUnlockText: some View {

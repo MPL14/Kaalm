@@ -11,6 +11,9 @@ import SwiftUI
 /// A class for playing haptics. Using a class allows to create only one
 /// haptic engine for the whole app.
 final class HapticEngine: HapticPlaying, ObservableObject {
+    // MARK: - State
+    @Published var deviceSupportsHaptics: Bool = true
+
     // MARK: - Properties
     private var hapticEngine: CHHapticEngine?
 
@@ -82,7 +85,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// play a haptic based on the input haptic type.
     public func playHaptic(_ hapticType: HapticType) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-//            print("The device does not support haptics.")
+            deviceSupportsHaptics = false
             return
         }
 
@@ -118,7 +121,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// function's completion handler.
     public func asyncPlayHaptic(_ hapticType: HapticType) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            print("The device does not support haptics.")
+            deviceSupportsHaptics = false
             return
         }
 
@@ -136,6 +139,42 @@ final class HapticEngine: HapticPlaying, ObservableObject {
                 }
 
                 let pattern = try CHHapticPattern(events: events, parameters: [])
+                let player = try self.hapticEngine?.makePlayer(with: pattern)
+                try player?.start(atTime: 0)
+            } catch {
+                print("Failed to play pattern: \(error.localizedDescription)")
+            }
+        }
+
+        if hapticEngine == nil || hapticEngineWasStopped {
+            /// Call the asynchronous version of prepareHaptics
+            /// and pass playHapticsCompletion to run when
+            /// the async function has completed.
+            asyncPrepareHaptics(playHapticsCompletion)
+            hapticEngineWasStopped = false
+        } else {
+            playHapticsCompletion()
+        }
+    }
+
+    /// Asynchronously starts the haptic engine if needed and then
+    /// plays a single haptic based on the input through a completion
+    /// handler.
+    func asyncPlayHaptic(intensity: CGFloat, sharpness: CGFloat) {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
+            deviceSupportsHaptics = false
+            return
+        }
+
+        let playHapticsCompletion = { [weak self] in
+            guard let self = self else { return }
+
+            do {
+                let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(intensity))
+                let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(sharpness))
+                let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
+
+                let pattern = try CHHapticPattern(events: [event], parameters: [])
                 let player = try self.hapticEngine?.makePlayer(with: pattern)
                 try player?.start(atTime: 0)
             } catch {

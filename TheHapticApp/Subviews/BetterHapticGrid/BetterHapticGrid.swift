@@ -22,7 +22,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
     private var dotPaddingEdges: Edge.Set = .all
     private var dotPadding: CGFloat = 0
 
-    private var colorAnimationDuration: CGFloat = 3.0
+    private var colorAnimationDuration: CGFloat = 0.5
 
     var body: some View {
         VStack(spacing: 0) {
@@ -69,24 +69,20 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                             withAnimation(.linear(duration: colorAnimationDuration)) {
                                 let insertion = touchedGridPoints.insert(touchedDotData.gridPoint)
                                 if insertion.inserted {
-                                    print("inserted")
                                     hapticEngine.playHaptic(.swipeSuccess)
                                 }
                             }
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + colorAnimationDuration) {
-                                // This is buggy. When the point is removed, the colors for
+                                // There is a bug here more visible when the animationDuration is long.
+                                // When the point is removed, the colors for
                                 // the dots still in touchedGridPoints get recalculated,
                                 // so they change colors every time one gets removed.
+                                // This doesn't happen when they're added though?
                                 withAnimation {
                                     _ = touchedGridPoints.remove(touchedDotData.gridPoint)
-                                    print("removed")
                                 }
                             }
-//                            withAnimation(.linear(duration: colorAnimationDuration).delay(colorAnimationDuration)) {
-
-
-//                            }
                         }
                     }
                 }

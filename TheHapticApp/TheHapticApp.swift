@@ -10,11 +10,29 @@ import SwiftUI
 @main
 struct TheHapticApp: App {
     @StateObject private var hapticEffects: HapticEngine = HapticEngine()
+    
+    @AppStorage("onboardingComplete") var onboardingComplete: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .environmentObject(hapticEffects)
+            ZStack {
+                if !onboardingComplete {
+                    OnboardingView()
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .bottom),
+                            removal: .move(edge: .top)
+                        ))
+                        .environmentObject(hapticEffects)
+                } else {
+                    MainView()
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .top),
+                            removal: .move(edge: .bottom)
+                        ))
+                        .environmentObject(hapticEffects)
+                }
+            }
+            .animation(.easeIn, value: self.onboardingComplete)
         }
     }
-}
+} 

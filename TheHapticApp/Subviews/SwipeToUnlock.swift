@@ -17,8 +17,8 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
     // Manages the offset of the slider within the grid.
     @State private var sliderOffset: Int = 0
 
-    // Binding to an external variable determining the unlocked status.
-    @Binding private var unlocked: Bool
+//    // Binding to an external variable determining the unlocked status.
+//    @Binding private var unlocked: Bool
 
     // MARK: - Properties
     // Total dimensions of the unlock slider.
@@ -29,8 +29,14 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
     private var dotPaddingEdges: Edge.Set = .all
     private var dotPadding: CGFloat = 1
 
-    init(_ unlocked: Binding<Bool>) {
-        self._unlocked = unlocked
+    private var onUnlock: () -> ()
+
+//    init(_ unlocked: Binding<Bool>) {
+//        self._unlocked = unlocked
+//    }
+
+    init(_ onUnlock: @escaping () -> ()) {
+        self.onUnlock = onUnlock
     }
 
     // MARK: - View
@@ -73,7 +79,11 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                     // Force to only play haptic if the sliderOffset changes.
                     let newSliderOffset = Int(min(rubberBanded, dragLimit))
                     if self.sliderOffset != newSliderOffset {
-                        hapticEngine.playHaptic(.swipeSuccess)
+                        hapticEngine.asyncPlayHaptic(
+                            intensity: CGFloat(self.sliderOffset) / CGFloat(gridDim.1 / 2),
+                            sharpness: 2
+                        )
+                        // should make this get stronger as sliderOffset increases
                         self.sliderOffset = newSliderOffset
                     }
                 }
@@ -90,7 +100,10 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                             }
                         }
                     } else {
-                        self.unlocked = true
+//                        withAnimation {
+//                            self.unlocked = true
+//                        }
+                        onUnlock()
                     }
                 }
         )
@@ -157,6 +170,6 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
 }
 
 #Preview {
-    SwipeToUnlock<HapticEngine>(.constant(false))
+    SwipeToUnlock<HapticEngine> { }
         .environmentObject(HapticEngine())
 }

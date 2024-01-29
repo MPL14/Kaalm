@@ -21,11 +21,9 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
-//                HapticGrid<HapticEngine>()
-//                    .gridDimensions(Int(gridRows), Int(gridCols))
                 BetterHapticGrid<HapticEngine>()
                     .gridDimensions(Int(currentGridRows), Int(currentGridCols))
-                    .dotSize(30)
+                    .dotSize(10)
                     .dotPadding()
             }
             .toolbar {
@@ -51,7 +49,6 @@ struct MainView: View {
                             .font(.system(size: 24, weight: .semibold))
                             .tint(.primary)
                     }
-
             }
         }
     }
