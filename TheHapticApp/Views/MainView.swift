@@ -17,6 +17,7 @@ struct MainView: View {
 
     @AppStorage("gridRows") var currentGridRows: Double = 16.0
     @AppStorage("gridCols") var currentGridCols: Double = 16.0
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
@@ -24,7 +25,7 @@ struct MainView: View {
 //                    .gridDimensions(Int(gridRows), Int(gridCols))
                 BetterHapticGrid<HapticEngine>()
                     .gridDimensions(Int(currentGridRows), Int(currentGridCols))
-                    .dotSize(10)
+                    .dotSize(30)
                     .dotPadding()
             }
             .toolbar {

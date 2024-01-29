@@ -22,7 +22,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
     private var dotPaddingEdges: Edge.Set = .all
     private var dotPadding: CGFloat = 0
 
-    private var colorAnimationDuration: CGFloat = 0.5
+    private var colorAnimationDuration: CGFloat = 3.0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -31,7 +31,9 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                     ForEach(0..<gridDim.1, id: \.self) { column in
                         HapticDot(size: dotSize)
                             .padding(dotPaddingEdges, dotPadding)
-                            .foregroundStyle(touchedGridPoints.contains(GridPoint(x: row, y: column)) ? Color.random : Color.primary)
+                            .foregroundStyle(
+                                touchedGridPoints.contains(GridPoint(x: row, y: column)) ? Color.random : Color.primary
+                            )
                             .opacity(touchedGridPoints.contains(GridPoint(x: row, y: column)) ? 0.5 : 1.0)
                             .background(
                                 // Use a geometry reader to get this dot's
@@ -54,7 +56,6 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
         // This PreferenceKey allows us to monitor the location and index
         // of each HapticDot and do stuff with that information.
         .onPreferenceChange(HapticDotPreferenceKey.self) { value in
-            print(value)
             hapticDotData = value
         }
         .gesture(
@@ -62,24 +63,31 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
             DragGesture(minimumDistance: 0, coordinateSpace: .global)
                 .onChanged { dragValue in
                     if let touchedDotData = hapticDotData.first(where: { $0.bounds.contains(dragValue.location) }) {
-                        print("touched \(touchedDotData.gridPoint)")
-
-                        // Don't perform the animation and stuff if this haptic dot
+                        // Don't perform the animation if this haptic dot
                         // is still in touchedGridPoints, i.e. slow drag.
-                        guard !touchedGridPoints.contains(touchedDotData.gridPoint) else { return }
+                        if !touchedGridPoints.contains(touchedDotData.gridPoint) {
+                            withAnimation(.linear(duration: colorAnimationDuration)) {
+                                let insertion = touchedGridPoints.insert(touchedDotData.gridPoint)
+                                if insertion.inserted {
+                                    print("inserted")
+                                    hapticEngine.playHaptic(.swipeSuccess)
+                                }
+                            }
 
-                        touchedGridPoints.insert(touchedDotData.gridPoint)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + colorAnimationDuration) {
+                                // This is buggy. When the point is removed, the colors for
+                                // the dots still in touchedGridPoints get recalculated,
+                                // so they change colors every time one gets removed.
+                                withAnimation {
+                                    _ = touchedGridPoints.remove(touchedDotData.gridPoint)
+                                    print("removed")
+                                }
+                            }
+//                            withAnimation(.linear(duration: colorAnimationDuration).delay(colorAnimationDuration)) {
 
-                        print(touchedGridPoints.count)
 
-                        withAnimation(.linear(duration: colorAnimationDuration).delay(colorAnimationDuration)) {
-                            _ = touchedGridPoints.remove(touchedDotData.gridPoint)
+//                            }
                         }
-
-                        hapticEngine.playHaptic(.swipeSuccess)
-                    } else {
-                        print("not found")
-                        print(hapticDotData)
                     }
                 }
         )

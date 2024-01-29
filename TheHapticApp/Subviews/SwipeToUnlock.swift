@@ -70,9 +70,12 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                         coefficient: 4.5
                     )
 
-                    self.sliderOffset = Int(min(rubberBanded, dragLimit))
-
-                    hapticEngine.playHaptic(.swipeSuccess)
+                    // Force to only play haptic if the sliderOffset changes.
+                    let newSliderOffset = Int(min(rubberBanded, dragLimit))
+                    if self.sliderOffset != newSliderOffset {
+                        hapticEngine.playHaptic(.swipeSuccess)
+                        self.sliderOffset = newSliderOffset
+                    }
                 }
                 .onEnded { _ in
                     // If gesture didn't complete.

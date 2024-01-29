@@ -47,9 +47,9 @@ struct OnboardingView: View {
     // MARK: - Subviews
     private var swipeToUnlock: some View {
         SwipeToUnlock<HapticEngine>($onboardingComplete)
-            .gridDimensions(6, 45)
-            .sliderWidth(6)
-            .dotPadding(0.8)
+            .gridDimensions(6, 50)
+            .sliderWidth(7)
+            .dotPadding(0.4)
     }
 
     private var swipeToUnlockText: some View {
