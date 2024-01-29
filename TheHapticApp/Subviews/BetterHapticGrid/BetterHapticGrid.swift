@@ -8,12 +8,15 @@
 import SwiftUI
 
 struct BetterHapticGrid<H: HapticPlaying>: View {
+    @AppStorage("feedbackIntensity") private var feedbackIntensity: Double = 1.0
+
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: H
 
     // MARK: - State
     @State private var touchedGridPoints: Set<GridPoint> = Set<GridPoint>()
     @State private var hapticDotData: Set<HapticDotPreferenceData> = Set<HapticDotPreferenceData>()
+    @State private var gridScale: CGSize = .zero
 
     // MARK: - Properties
     private var gridDim: (Int, Int) = (3, 3)  // (row, column)
@@ -22,6 +25,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
     private var dotPaddingEdges: Edge.Set = .all
     private var dotPadding: CGFloat = 0
 
+    private var hapticDotColor: Color = .primary
     private var colorAnimationDuration: CGFloat = 0.5
 
     var body: some View {
@@ -32,7 +36,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                         HapticDot(size: dotSize)
                             .padding(dotPaddingEdges, dotPadding)
                             .foregroundStyle(
-                                touchedGridPoints.contains(GridPoint(x: row, y: column)) ? Color.random : Color.primary
+                                touchedGridPoints.contains(GridPoint(x: row, y: column)) ? Color.random : hapticDotColor
                             )
                             .opacity(touchedGridPoints.contains(GridPoint(x: row, y: column)) ? 0.5 : 1.0)
                             .background(
@@ -53,6 +57,12 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                 }
             }
         }
+        .scaleEffect(gridScale, anchor: .center)
+        .onAppear {
+            withAnimation(.spring(bounce: 0.4)) {
+                gridScale = CGSize(width: 1.0, height: 1.0)
+            }
+        }
         // This PreferenceKey allows us to monitor the location and index
         // of each HapticDot and do stuff with that information.
         .onPreferenceChange(HapticDotPreferenceKey.self) { value in
@@ -69,7 +79,9 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
                             withAnimation(.linear(duration: colorAnimationDuration)) {
                                 let insertion = touchedGridPoints.insert(touchedDotData.gridPoint)
                                 if insertion.inserted {
-                                    hapticEngine.playHaptic(.swipeSuccess)
+                                    hapticEngine.asyncPlayHaptic(
+                                        intensity: feedbackIntensity, sharpness: feedbackIntensity
+                                    )
                                 }
                             }
 
@@ -125,6 +137,14 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
         var view = self
         view.dotPaddingEdges = .all
         view.dotPadding = length ?? 5
+        return view
+    }
+
+    /// Changes the default dot color.
+    /// - Parameter color
+    public func dotColor(_ color: Color) -> BetterHapticGrid {
+        var view = self
+        view.hapticDotColor = color
         return view
     }
 }

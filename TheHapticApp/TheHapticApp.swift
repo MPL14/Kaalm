@@ -18,17 +18,11 @@ struct TheHapticApp: App {
             ZStack {
                 if !onboardingComplete {
                     OnboardingView()
-                        .transition(.asymmetric(
-                            insertion: .move(edge: .bottom),
-                            removal: .move(edge: .top)
-                        ))
+                        .transition(.opacity)
                         .environmentObject(hapticEffects)
                 } else {
                     MainView()
-                        .transition(.asymmetric(
-                            insertion: .move(edge: .top),
-                            removal: .move(edge: .bottom)
-                        ))
+                        .transition(.opacity)
                         .environmentObject(hapticEffects)
                 }
             }

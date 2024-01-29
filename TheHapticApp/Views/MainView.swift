@@ -17,20 +17,24 @@ struct MainView: View {
 
     @AppStorage("gridRows") var currentGridRows: Double = 16.0
     @AppStorage("gridCols") var currentGridCols: Double = 16.0
+    @AppStorage("dotSize") var currentDotSize: Double = 10.0
+    @AppStorage("myColor") var myColor: String = "Default"
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
                 BetterHapticGrid<HapticEngine>()
                     .gridDimensions(Int(currentGridRows), Int(currentGridCols))
-                    .dotSize(10)
+                    .dotSize(CGFloat(currentDotSize))
                     .dotPadding()
+                    .dotColor(Color(myColor))
             }
             .toolbar {
                 toolbarView
             }
         }
-        .tint(.primary)
+        .foregroundStyle(Color("Default"))
+        .tint(Color("Default"))
         .environmentObject(hapticEngine)
     }
 
