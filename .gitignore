@@ -48,4 +48,4 @@ playground.xcworkspace
 .DS_Store
 
 # Secrets
-
+Config.xcconfig
