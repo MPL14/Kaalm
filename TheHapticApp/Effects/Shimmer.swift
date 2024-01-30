@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    /// Adds an animated shimmer effect to the view with masking.
+    /// Adds an animated shimmer effect to the view using masking.
     func shimmer(_ config: ShimmerConfiguration) -> some View {
         modifier(ShimmerEffect(config: config))
     }

@@ -46,13 +46,28 @@ struct MainView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
+                Menu {
                     NavigationLink {
                         ProfileView()
                     } label: {
-                        Image(systemName: "person.circle")
-                            .font(.system(size: 24, weight: .semibold))
-                            .tint(.primary)
+                        HStack {
+                            Text("Customize Appearance")
+                            Image(systemName: "paintpalette")
+                        }
                     }
+
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        HStack {
+                            Text("Settings")
+                            Image(systemName: "gear")
+                        }
+                    }
+                } label: {
+                    Image(systemName: "person.circle")
+                        .font(.system(size: 24, weight: .semibold))
+                }
             }
         }
     }

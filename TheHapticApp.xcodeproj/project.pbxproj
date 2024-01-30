@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440B74402B6977B20060974A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B743F2B6977B20060974A /* SettingsView.swift */; };
+		440B74442B69794A0060974A /* HapticEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B74422B6979490060974A /* HapticEvents.swift */; };
+		440B74452B69794A0060974A /* HapticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B74432B69794A0060974A /* HapticType.swift */; };
 		441B21972B62332300CF4DFF /* TheHapticApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21962B62332300CF4DFF /* TheHapticApp.swift */; };
 		441B21992B62332300CF4DFF /* HapticGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21982B62332300CF4DFF /* HapticGrid.swift */; };
 		441B219B2B62332400CF4DFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B219A2B62332400CF4DFF /* Assets.xcassets */; };
 		441B219E2B62332400CF4DFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 441B219D2B62332400CF4DFF /* Preview Assets.xcassets */; };
 		441B21A62B62340000CF4DFF /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21A52B62340000CF4DFF /* HapticEngine.swift */; };
-		441B21A82B62342C00CF4DFF /* HapticEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21A72B62342C00CF4DFF /* HapticEvents.swift */; };
-		441B21AA2B62345900CF4DFF /* HapticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21A92B62345900CF4DFF /* HapticType.swift */; };
 		441B21AC2B62BA6300CF4DFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21AB2B62BA6300CF4DFF /* ContentView.swift */; };
 		441B21AE2B62BA9400CF4DFF /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21AD2B62BA9400CF4DFF /* DirectionsView.swift */; };
 		441B21B02B62BAC800CF4DFF /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21AF2B62BAC800CF4DFF /* SplashScreenView.swift */; };
@@ -42,14 +43,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440B743F2B6977B20060974A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		440B74422B6979490060974A /* HapticEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticEvents.swift; sourceTree = "<group>"; };
+		440B74432B69794A0060974A /* HapticType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticType.swift; sourceTree = "<group>"; };
 		441B21932B62332300CF4DFF /* TheHapticApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheHapticApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		441B21962B62332300CF4DFF /* TheHapticApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticApp.swift; sourceTree = "<group>"; };
 		441B21982B62332300CF4DFF /* HapticGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGrid.swift; sourceTree = "<group>"; };
 		441B219A2B62332400CF4DFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		441B219D2B62332400CF4DFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		441B21A52B62340000CF4DFF /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
-		441B21A72B62342C00CF4DFF /* HapticEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEvents.swift; sourceTree = "<group>"; };
-		441B21A92B62345900CF4DFF /* HapticType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticType.swift; sourceTree = "<group>"; };
 		441B21AB2B62BA6300CF4DFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		441B21AD2B62BA9400CF4DFF /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
 		441B21AF2B62BAC800CF4DFF /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		440B74412B6979070060974A /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				440B74422B6979490060974A /* HapticEvents.swift */,
+				440B74432B69794A0060974A /* HapticType.swift */,
+				441B21A52B62340000CF4DFF /* HapticEngine.swift */,
+				441B21B72B62D87900CF4DFF /* HapticPlaying.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
 		441B218A2B62332300CF4DFF = {
 			isa = PBXGroup;
 			children = (
@@ -140,10 +153,7 @@
 		441B21A42B6233E900CF4DFF /* Effects */ = {
 			isa = PBXGroup;
 			children = (
-				441B21A52B62340000CF4DFF /* HapticEngine.swift */,
-				441B21A72B62342C00CF4DFF /* HapticEvents.swift */,
-				441B21A92B62345900CF4DFF /* HapticType.swift */,
-				441B21B72B62D87900CF4DFF /* HapticPlaying.swift */,
+				440B74412B6979070060974A /* Haptics */,
 				44BB04362B63169600865B00 /* RubberBanding.swift */,
 				4465D2B22B64139F00BD0B01 /* Shimmer.swift */,
 			);
@@ -165,6 +175,7 @@
 				441B21B12B62BB2200CF4DFF /* MainView.swift */,
 				4465D2B02B64093300BD0B01 /* OnboardingView.swift */,
 				4465D2C32B64741100BD0B01 /* ProfileView.swift */,
+				440B743F2B6977B20060974A /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -305,21 +316,22 @@
 				4465D2C22B6433AF00BD0B01 /* CGRect-Extensions.swift in Sources */,
 				44F855B02B68138000081920 /* ColorPicker.swift in Sources */,
 				441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */,
+				440B74452B69794A0060974A /* HapticType.swift in Sources */,
 				441B21A62B62340000CF4DFF /* HapticEngine.swift in Sources */,
 				441B21AE2B62BA9400CF4DFF /* DirectionsView.swift in Sources */,
 				441B21AC2B62BA6300CF4DFF /* ContentView.swift in Sources */,
 				4465D2B52B641B4A00BD0B01 /* TitleView.swift in Sources */,
 				441B21972B62332300CF4DFF /* TheHapticApp.swift in Sources */,
+				440B74442B69794A0060974A /* HapticEvents.swift in Sources */,
 				441B21B02B62BAC800CF4DFF /* SplashScreenView.swift in Sources */,
 				4450CA182B685652008093B6 /* Secrets.swift in Sources */,
-				441B21AA2B62345900CF4DFF /* HapticType.swift in Sources */,
-				441B21A82B62342C00CF4DFF /* HapticEvents.swift in Sources */,
 				44BB04372B63169600865B00 /* RubberBanding.swift in Sources */,
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
 				4465D2C42B64741100BD0B01 /* ProfileView.swift in Sources */,
 				4450CA122B6850B9008093B6 /* PurchaseManager.swift in Sources */,
 				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
+				440B74402B6977B20060974A /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

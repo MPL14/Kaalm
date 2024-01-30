@@ -25,7 +25,7 @@ struct ProfileView: View {
     var body: some View {
         List {
             Group {
-                Section("Appearance - Premium") {
+                Section("Appearance (Premium)") {
                     appearanceControls
 
                     manuallyPurchasePremiumButton
@@ -37,7 +37,6 @@ struct ProfileView: View {
                     )
                 }
             }
-            .tint(Color("Default"))
         }
         .task {
             self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
@@ -52,6 +51,8 @@ struct ProfileView: View {
         .sheet(isPresented: self.$manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)
         }
+        .tint(Color("Default"))
+        .navigationTitle("Customize Appearance")
     }
 
     // MARK: - Subviews
@@ -102,15 +103,16 @@ struct ProfileView: View {
             }) {
                 Text("Purchase Premium for $0.99")
                     .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .frame(maxWidth: .infinity, minHeight: 30)
+                    .foregroundStyle(.blue)
             }
             .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 0))
-            .tint(.blue)
         }
         .buttonStyle(.plain)
         .listRowBackground(EmptyView())
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .tint(.blue)
     }
 }
 
