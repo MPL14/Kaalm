@@ -1,0 +1,60 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "About" : {
+
+    },
+    "Appearance (Premium)" : {
+
+    },
+    "Calm through haptics." : {
+
+    },
+    "Customize Appearance" : {
+
+    },
+    "Dot Size" : {
+
+    },
+    "Error sending mail." : {
+
+    },
+    "Feedback Intensity" : {
+
+    },
+    "Grid Columns" : {
+
+    },
+    "Grid Rows" : {
+
+    },
+    "Need Support?" : {
+
+    },
+    "Purchase Premium for $0.99" : {
+
+    },
+    "Rate The Haptic App" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Swipe to Open" : {
+
+    },
+    "The Haptic App" : {
+
+    },
+    "The Haptic App, v%@" : {
+
+    },
+    "Unable to send email from app. Are you using the Mail app?" : {
+
+    }
+  },
+  "version" : "1.0"
+}

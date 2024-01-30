@@ -23,7 +23,7 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
-                BetterHapticGrid<HapticEngine>()
+                HapticGrid<HapticEngine>()
                     .gridDimensions(Int(currentGridRows), Int(currentGridCols))
                     .dotSize(CGFloat(currentDotSize))
                     .dotPadding()

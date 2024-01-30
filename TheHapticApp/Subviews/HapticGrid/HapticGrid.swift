@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BetterHapticGrid<H: HapticPlaying>: View {
+struct HapticGrid<H: HapticPlaying>: View {
     @AppStorage("feedbackIntensity") private var feedbackIntensity: Double = 1.0
 
     // MARK: - Environment
@@ -105,7 +105,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
     /// Changes the number of dots on the grid.
     /// - Parameter x: Number of dots on x-axis.
     /// - Parameter y: Number of dots on y-axis.
-    public func gridDimensions(_ x: Int, _ y: Int) -> BetterHapticGrid {
+    public func gridDimensions(_ x: Int, _ y: Int) -> HapticGrid {
         var view = self
         view.gridDim = (x, y)
         view.hapticDotData = Set<HapticDotPreferenceData>()
@@ -114,7 +114,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
 
     /// Changes the dot size.
     /// - Parameter size: Diameter of the dots.
-    public func dotSize(_ size: CGFloat) -> BetterHapticGrid {
+    public func dotSize(_ size: CGFloat) -> HapticGrid {
         var view = self
         view.dotSize = size
         return view
@@ -124,7 +124,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
     /// - Parameter edges: Which edges to apply the padding.
     /// - Parameter length: How much padding to apply to the specified edges.
     public func dotPadding(_ edges: Edge.Set = .all,
-                           _ length: CGFloat? = nil) -> BetterHapticGrid {
+                           _ length: CGFloat? = nil) -> HapticGrid {
         var view = self
         view.dotPaddingEdges = edges
         view.dotPadding = length ?? 5
@@ -133,7 +133,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
 
     /// Changes the padding between the dots.
     /// - Parameter length: How much padding to apply to the edges.
-    public func dotPadding(_ length: CGFloat? = nil) -> BetterHapticGrid {
+    public func dotPadding(_ length: CGFloat? = nil) -> HapticGrid {
         var view = self
         view.dotPaddingEdges = .all
         view.dotPadding = length ?? 5
@@ -142,7 +142,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
 
     /// Changes the default dot color.
     /// - Parameter color
-    public func dotColor(_ color: Color) -> BetterHapticGrid {
+    public func dotColor(_ color: Color) -> HapticGrid {
         var view = self
         view.hapticDotColor = color
         return view
@@ -150,6 +150,6 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
 }
 
 #Preview {
-    BetterHapticGrid<HapticEngine>()
+    HapticGrid<HapticEngine>()
         .environmentObject(HapticEngine())
 }

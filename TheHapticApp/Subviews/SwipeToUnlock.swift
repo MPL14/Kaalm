@@ -17,9 +17,6 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
     // Manages the offset of the slider within the grid.
     @State private var sliderOffset: Int = 0
 
-//    // Binding to an external variable determining the unlocked status.
-//    @Binding private var unlocked: Bool
-
     // MARK: - Properties
     // Total dimensions of the unlock slider.
     private var gridDim: (Int, Int) = (7, 42)  // (row, column)
@@ -30,10 +27,6 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
     private var dotPadding: CGFloat = 1
 
     private var onUnlock: () -> ()
-
-//    init(_ unlocked: Binding<Bool>) {
-//        self._unlocked = unlocked
-//    }
 
     init(_ onUnlock: @escaping () -> ()) {
         self.onUnlock = onUnlock
@@ -100,9 +93,6 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                             }
                         }
                     } else {
-//                        withAnimation {
-//                            self.unlocked = true
-//                        }
                         onUnlock()
                     }
                 }

@@ -44,20 +44,20 @@ struct CustomColorPicker<ColorShape: Shape>: View {
         }
     }
 
-    public init(_ title: String = "Color Picker",
+    public init(_ title: LocalizedStringResource = "Color Picker",
          selectedColor: Binding<String>,
          colorShape: @escaping () -> ColorShape = { Circle() }
     ) {
-        self.title = title
+        self.title = String(localized: title)
         self._selectedColor = selectedColor
         self.colorShape = colorShape()
     }
 
     /// Changes the color picker's title.
     /// - Parameter newTitle: String
-    public func title(_ newTitle: String) -> CustomColorPicker {
+    public func title(_ newTitle: LocalizedStringResource) -> CustomColorPicker {
         var view = self
-        view.title = newTitle
+        view.title = String(localized: newTitle)
         return view
     }
 

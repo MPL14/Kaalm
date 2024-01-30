@@ -22,15 +22,18 @@ struct SettingsView: View {
 
     var body: some View {
         List {
-            Section("About") {
+            Section {
                 aboutButton
 
                 requestReviewButton
 
                 supportEmailButton
+            } header: {
+                Text("About")
+            } footer: {
+                Text(viewModel.appVersionNumber)
+                    .frame(maxWidth: .infinity)
             }
-
-            appVersionNumberTag
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
             MailView(result: $viewModel.mailResult)
@@ -56,7 +59,9 @@ struct SettingsView: View {
     private var requestReviewButton: some View {
         Button(action: {}) {
             Button {
-                requestReview()
+                Task {
+                    requestReview()
+                }
             } label: {
                 HStack {
                     Text(viewModel.rateButtonText)

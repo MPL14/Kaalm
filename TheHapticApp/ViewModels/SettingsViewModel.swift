@@ -15,16 +15,16 @@ final class SettingsViewModel: ObservableObject {
     @Published var isShowingMailView = false
     @Published var showingMailError = false
 
-    public var mailErrorMessageTitle: String = "Error sending mail."
-    public var mailErrorMessage: String = "Unable to send email from app. Are you using the Mail app?"
+    public var mailErrorMessageTitle: String = String(localized: "Error sending mail.")
+    public var mailErrorMessage: String = String(localized: "Unable to send email from app. Are you using the Mail app?")
 
     public var appVersionNumber: String {
-        return "The Haptic App, v\(Bundle.main.releaseVersionNumber ?? "nil")"
+        return String(localized: "The Haptic App, v\(Bundle.main.releaseVersionNumber ?? "nil")")
     }
 
-    public var rateButtonText: String = "Rate The Haptic App"
+    public var rateButtonText: String = String(localized: "Rate The Haptic App")
 
-    public var supportEmailButtonText: String = "Need Support?"
+    public var supportEmailButtonText: String = String(localized: "Need Support?")
 
     public func supportEmailButtonTapped() {
         if MFMailComposeViewController.canSendMail() {
