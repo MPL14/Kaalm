@@ -43,10 +43,11 @@ struct ProfileView: View {
         }
         .presentPaywallIfNeeded(
             requiredEntitlementIdentifier: PurchaseManager.premiumEntitlement,
-            purchaseCompleted: { _ in
-                self.isPremiumUnlocked = true
-            }, restoreCompleted: { _ in
-                self.isPremiumUnlocked = true
+            purchaseCompleted: { customerInfo in
+                print("Purchase completed: \(customerInfo.entitlements)")
+            }, restoreCompleted: { customerInfo in
+                // Paywall will be dismissed automatically if "pro" is now active.
+                print("Purchases restored: \(customerInfo.entitlements)")
             })
         .sheet(isPresented: self.$manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)

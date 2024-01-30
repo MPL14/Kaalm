@@ -21,14 +21,12 @@ struct TheHapticApp: App {
             ZStack {
                 if !onboardingComplete {
                     OnboardingView()
-                        .transition(.opacity)
-                        .environmentObject(hapticEffects)
                 } else {
                     MainView()
-                        .transition(.opacity)
-                        .environmentObject(hapticEffects)
                 }
             }
+            .transition(.opacity)
+            .environmentObject(hapticEffects)
             .animation(.easeIn, value: self.onboardingComplete)
         }
     }
