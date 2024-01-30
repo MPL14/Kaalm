@@ -25,7 +25,7 @@
 		4450CA0A2B685069008093B6 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA092B685069008093B6 /* RevenueCat */; };
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
-		4450CA122B6850B9008093B6 /* PurchasesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA112B6850B9008093B6 /* PurchasesModel.swift */; };
+		4450CA122B6850B9008093B6 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA112B6850B9008093B6 /* PurchaseManager.swift */; };
 		4450CA182B685652008093B6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA172B685652008093B6 /* Secrets.swift */; };
 		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
 		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
@@ -59,7 +59,7 @@
 		4450CA042B684DDA008093B6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		4450CA062B684E84008093B6 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../Downloads/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		4450CA112B6850B9008093B6 /* PurchasesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasesModel.swift; sourceTree = "<group>"; };
+		4450CA112B6850B9008093B6 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4450CA172B685652008093B6 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				4450CA152B6854AA008093B6 /* Info.plist */,
 				441B21962B62332300CF4DFF /* TheHapticApp.swift */,
 				441B21B62B62D75E00CF4DFF /* Views */,
-				4450CA102B6850A6008093B6 /* Models */,
+				4450CA102B6850A6008093B6 /* Managers */,
 				4465D2AF2B64092200BD0B01 /* Subviews */,
 				441B21A42B6233E900CF4DFF /* Effects */,
 				441B21B32B62BB7100CF4DFF /* Extensions */,
@@ -177,12 +177,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4450CA102B6850A6008093B6 /* Models */ = {
+		4450CA102B6850A6008093B6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				4450CA112B6850B9008093B6 /* PurchasesModel.swift */,
+				4450CA112B6850B9008093B6 /* PurchaseManager.swift */,
 			);
-			path = Models;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		4465D2AF2B64092200BD0B01 /* Subviews */ = {
@@ -318,7 +318,7 @@
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
 				4465D2C42B64741100BD0B01 /* ProfileView.swift in Sources */,
-				4450CA122B6850B9008093B6 /* PurchasesModel.swift in Sources */,
+				4450CA122B6850B9008093B6 /* PurchaseManager.swift in Sources */,
 				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

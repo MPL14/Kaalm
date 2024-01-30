@@ -59,7 +59,7 @@ struct BetterHapticGrid<H: HapticPlaying>: View {
         }
         .scaleEffect(gridScale, anchor: .center)
         .onAppear {
-            withAnimation(.spring(bounce: 0.4)) {
+            withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
                 gridScale = CGSize(width: 1.0, height: 1.0)
             }
         }

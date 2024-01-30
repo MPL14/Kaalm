@@ -12,6 +12,8 @@ struct OnboardingView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
+    @State private var isAnimating: Bool = false
+
     @AppStorage("onboardingComplete") private var onboardingComplete: Bool = false
 
     var body: some View {
@@ -21,11 +23,12 @@ struct OnboardingView: View {
 
             RadialGradient(
                 colors: [.black.opacity(0.8), .black],
-                center: .topLeading,
+                center: isAnimating ? .topTrailing : .topLeading,
                 startRadius: 0.2,
                 endRadius: UIScreen.main.bounds.height
             )
             .ignoresSafeArea()
+
             VStack(spacing: 10) {
                 TitleView()
                     .foregroundStyle(.white)
@@ -38,8 +41,13 @@ struct OnboardingView: View {
                 VStack(spacing: 15) {
                     swipeToUnlock
 
-                    swipeToUnlockText
+                    swipeToOpenText
                 }
+            }
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 5).repeatForever(autoreverses: true)) {
+                isAnimating.toggle()
             }
         }
     }
@@ -56,7 +64,7 @@ struct OnboardingView: View {
         .dotPadding(0.4)
     }
 
-    private var swipeToUnlockText: some View {
+    private var swipeToOpenText: some View {
         Text("Swipe to Open")
             .font(.headline)
             .shimmer(.init(tint: .white.opacity(0.5), highlight: .white, blur: 5))
