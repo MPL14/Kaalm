@@ -57,7 +57,7 @@ struct MainView: View {
                     }
 
                     NavigationLink {
-                        SettingsView()
+                        SettingsView(SettingsViewModel())
                     } label: {
                         HStack {
                             Text("Settings")
