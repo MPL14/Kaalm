@@ -59,7 +59,7 @@ struct OnboardingView: View {
                 self.onboardingComplete = true
             }
         }
-        .gridDimensions(6, 50)
+        .gridDimensions(6, 45)
         .sliderWidth(7)
         .dotPadding(0.4)
     }

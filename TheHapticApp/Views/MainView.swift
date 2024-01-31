@@ -12,8 +12,6 @@ struct MainView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
-    @State private var gridRows: CGFloat = 16.0
-    @State private var gridCols: CGFloat = 16.0
     @State private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
@@ -33,6 +31,7 @@ struct MainView: View {
             .toolbar {
                 toolbarView
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .foregroundStyle(Color("Default"))
         .tint(Color("Default"))
