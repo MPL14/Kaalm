@@ -12,6 +12,7 @@ import SwiftUI
 struct SettingsView: View {
     // MARK: - Environment
     @Environment(\.requestReview) var requestReview
+    @Environment(\.openURL) var openURL
 
     // MARK: - State
     @ObservedObject private var viewModel: SettingsViewModel
@@ -28,6 +29,8 @@ struct SettingsView: View {
                 requestReviewButton
 
                 supportEmailButton
+
+                restorePurchasesButton
             } header: {
                 Text("About")
             } footer: {
@@ -63,19 +66,16 @@ struct SettingsView: View {
                     requestReview()
                 }
             } label: {
-                HStack {
-                    Text(viewModel.rateButtonText)
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, minHeight: 30)
+                    Text("Rate The Haptic App")
+                .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
                 .foregroundStyle(.blue)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 0))
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 15, bottom: 0, trailing: 0))
-        .tint(.blue)
+        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .tint(.clear)
     }
 
     private var supportEmailButton: some View {
@@ -83,18 +83,51 @@ struct SettingsView: View {
             Button {
                 viewModel.supportEmailButtonTapped()
             } label: {
-                HStack {
-                    Text(viewModel.supportEmailButtonText)
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, minHeight: 30)
-                .foregroundStyle(.blue)
+                Text(viewModel.supportEmailButtonText)
+                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                    .foregroundStyle(.blue)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 0))
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 15, bottom: 0, trailing: 0))
+        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .tint(.clear)
+    }
+
+    private var restorePurchasesButton: some View {
+        Button(action: {}) {
+            Button {
+                viewModel.supportEmailButtonTapped()
+            } label: {
+                Text(viewModel.restorePurchasesButtonText)
+                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                    .foregroundStyle(.blue)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 0))
+        }
+        .buttonStyle(.plain)
+        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .tint(.clear)
+    }
+
+    private var testButton: some View {
+        Button(action: {}) {
+            Button(action: {
+                print("hi")
+            }) {
+                Text("Purchase Premium for $0.99")
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, minHeight: 30)
+                    .foregroundStyle(.blue)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 0))
+        }
+        .buttonStyle(.plain)
+        .listRowBackground(EmptyView())
+        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .tint(.blue)
     }
 

@@ -13,11 +13,11 @@ struct ProfileView: View {
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: HapticEngine
 
-    @AppStorage("gridRows") var currentGridRows: Double = 16.0
-    @AppStorage("gridCols") var currentGridCols: Double = 16.0
-    @AppStorage("dotSize") var currentDotSize: Double = 10.0
-    @AppStorage("feedbackIntensity") var feedbackIntensity: Double = 1.0
-    @AppStorage("myColor") var myColor: String = ""
+    @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
+    @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
+    @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
+    @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
+    @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
 
     @State private var isPremiumUnlocked: Bool = false
     @State private var manuallyShowPaywall: Bool = false
@@ -82,10 +82,10 @@ struct ProfileView: View {
             HStack {
                 CustomColorPicker(selectedColor: $myColor)
                     .colors(
-                        ["Default", "Clay", "Ocean", "Rose", "Sage"]
+                        [Constants.defaultColor, Constants.clayColor, Constants.oceanColor, Constants.roseColor, Constants.sageColor]
                     )
                     .title("Grid Color")
-                    .highlightColor(Color("Default"))
+                    .highlightColor(Color(Constants.defaultColor))
             }
         }
         .disabled(
@@ -100,9 +100,11 @@ struct ProfileView: View {
     private var manuallyPurchasePremiumButton: some View {
         Button(action: {}) {
             Button(action: {
-                self.manuallyShowPaywall = true
+                if !isPremiumUnlocked {
+                    self.manuallyShowPaywall = true
+                }
             }) {
-                Text("Purchase Premium for $0.99")
+                Text(isPremiumUnlocked ? "Premium Enabled" : "Purchase Premium for $0.99")
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, minHeight: 30)
                     .foregroundStyle(.blue)
@@ -114,6 +116,7 @@ struct ProfileView: View {
         .listRowBackground(EmptyView())
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .tint(.blue)
+        .allowsHitTesting(!isPremiumUnlocked)
     }
 }
 

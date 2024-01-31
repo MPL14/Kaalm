@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440157F32B6AC71F00AD2EC3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440157F22B6AC71F00AD2EC3 /* Constants.swift */; };
 		440B74402B6977B20060974A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B743F2B6977B20060974A /* SettingsView.swift */; };
 		440B74442B69794A0060974A /* HapticEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B74422B6979490060974A /* HapticEvents.swift */; };
 		440B74452B69794A0060974A /* HapticType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440B74432B69794A0060974A /* HapticType.swift */; };
@@ -22,7 +23,6 @@
 		441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */; };
 		441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B72B62D87900CF4DFF /* HapticPlaying.swift */; };
 		4450CA052B684DDA008093B6 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4450CA042B684DDA008093B6 /* Configuration.storekit */; };
-		4450CA072B684E84008093B6 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 4450CA062B684E84008093B6 /* StoreKitTestCertificate.cer */; };
 		4450CA0A2B685069008093B6 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA092B685069008093B6 /* RevenueCat */; };
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
@@ -43,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440157F02B6AC2D500AD2EC3 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		440157F22B6AC71F00AD2EC3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		440B743F2B6977B20060974A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		440B74422B6979490060974A /* HapticEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticEvents.swift; sourceTree = "<group>"; };
 		440B74432B69794A0060974A /* HapticType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HapticType.swift; sourceTree = "<group>"; };
@@ -59,7 +61,6 @@
 		441B21B42B62BB7C00CF4DFF /* Color-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-Extensions.swift"; sourceTree = "<group>"; };
 		441B21B72B62D87900CF4DFF /* HapticPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPlaying.swift; sourceTree = "<group>"; };
 		4450CA042B684DDA008093B6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		4450CA062B684E84008093B6 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../Downloads/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4450CA112B6850B9008093B6 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +93,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		440157F12B6AC70F00AD2EC3 /* AppConstants */ = {
+			isa = PBXGroup;
+			children = (
+				4450CA172B685652008093B6 /* Secrets.swift */,
+				440157F22B6AC71F00AD2EC3 /* Constants.swift */,
+			);
+			path = AppConstants;
+			sourceTree = "<group>";
+		};
 		440B74412B6979070060974A /* Haptics */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +126,7 @@
 			children = (
 				440B744E2B6997590060974A /* Localizable.xcstrings */,
 				4450CA042B684DDA008093B6 /* Configuration.storekit */,
-				4450CA062B684E84008093B6 /* StoreKitTestCertificate.cer */,
+				440157F02B6AC2D500AD2EC3 /* StoreKitTestCertificate.cer */,
 				441B21952B62332300CF4DFF /* TheHapticApp */,
 				441B21942B62332300CF4DFF /* Products */,
 				4450CA0D2B68507E008093B6 /* Frameworks */,
@@ -136,6 +146,7 @@
 			children = (
 				4450CA152B6854AA008093B6 /* Info.plist */,
 				441B21962B62332300CF4DFF /* TheHapticApp.swift */,
+				440157F12B6AC70F00AD2EC3 /* AppConstants */,
 				441B21B62B62D75E00CF4DFF /* Views */,
 				440B744B2B6989850060974A /* ViewModels */,
 				4450CA102B6850A6008093B6 /* Managers */,
@@ -144,7 +155,6 @@
 				441B21B32B62BB7100CF4DFF /* Extensions */,
 				441B219A2B62332400CF4DFF /* Assets.xcassets */,
 				441B219C2B62332400CF4DFF /* Preview Content */,
-				4450CA172B685652008093B6 /* Secrets.swift */,
 			);
 			path = TheHapticApp;
 			sourceTree = "<group>";
@@ -304,7 +314,6 @@
 				441B219E2B62332400CF4DFF /* Preview Assets.xcassets in Resources */,
 				4450CA052B684DDA008093B6 /* Configuration.storekit in Resources */,
 				441B219B2B62332400CF4DFF /* Assets.xcassets in Resources */,
-				4450CA072B684E84008093B6 /* StoreKitTestCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +331,7 @@
 				4465D2BA2B642B0400BD0B01 /* HapticDotPreferenceKey.swift in Sources */,
 				441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */,
 				4465D2C22B6433AF00BD0B01 /* CGRect-Extensions.swift in Sources */,
+				440157F32B6AC71F00AD2EC3 /* Constants.swift in Sources */,
 				44F855B02B68138000081920 /* ColorPicker.swift in Sources */,
 				441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */,
 				440B74452B69794A0060974A /* HapticType.swift in Sources */,

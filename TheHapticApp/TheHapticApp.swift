@@ -14,7 +14,7 @@ struct TheHapticApp: App {
 
     @StateObject private var hapticEffects: HapticEngine = HapticEngine()
     
-    @AppStorage("onboardingComplete") var onboardingComplete: Bool = false
+    @AppStorage(Constants.onboardingComplete) var onboardingComplete: Bool = false
 
     var body: some Scene {
         WindowGroup {

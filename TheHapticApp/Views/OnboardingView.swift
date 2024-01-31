@@ -14,7 +14,7 @@ struct OnboardingView: View {
     // MARK: - State
     @State private var isAnimating: Bool = false
 
-    @AppStorage("onboardingComplete") private var onboardingComplete: Bool = false
+    @AppStorage(Constants.onboardingComplete) private var onboardingComplete: Bool = false
 
     var body: some View {
         ZStack {

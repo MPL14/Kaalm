@@ -23,8 +23,8 @@ final class SettingsViewModel: ObservableObject {
     }
 
     public var rateButtonText: String = String(localized: "Rate The Haptic App")
-
     public var supportEmailButtonText: String = String(localized: "Need Support?")
+    public var restorePurchasesButtonText: String = String(localized: "Restore Purchases")
 
     public func supportEmailButtonTapped() {
         if MFMailComposeViewController.canSendMail() {
@@ -32,5 +32,9 @@ final class SettingsViewModel: ObservableObject {
         } else {
             self.showingMailError = true
         }
+    }
+
+    init() {
+        print("init settings view model")
     }
 }

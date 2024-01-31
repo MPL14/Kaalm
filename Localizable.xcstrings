@@ -13,6 +13,9 @@
     "Calm through haptics." : {
 
     },
+    "Color Picker" : {
+
+    },
     "Customize Appearance" : {
 
     },
@@ -25,6 +28,9 @@
     "Feedback Intensity" : {
 
     },
+    "Grid Color" : {
+
+    },
     "Grid Columns" : {
 
     },
@@ -34,10 +40,16 @@
     "Need Support?" : {
 
     },
+    "Premium Enabled" : {
+
+    },
     "Purchase Premium for $0.99" : {
 
     },
     "Rate The Haptic App" : {
+
+    },
+    "Restore Purchases" : {
 
     },
     "Settings" : {

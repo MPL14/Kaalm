@@ -14,11 +14,12 @@ struct MainView: View {
     // MARK: - State
     @State private var gridRows: CGFloat = 16.0
     @State private var gridCols: CGFloat = 16.0
+    @State private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
-    @AppStorage("gridRows") var currentGridRows: Double = 16.0
-    @AppStorage("gridCols") var currentGridCols: Double = 16.0
-    @AppStorage("dotSize") var currentDotSize: Double = 10.0
-    @AppStorage("myColor") var myColor: String = "Default"
+    @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
+    @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
+    @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
+    @AppStorage(Constants.myColor) var myColor: String = "Default"
 
     var body: some View {
         NavigationStack {
@@ -57,7 +58,7 @@ struct MainView: View {
                     }
 
                     NavigationLink {
-                        SettingsView(SettingsViewModel())
+                        SettingsView(settingsViewModel)
                     } label: {
                         HStack {
                             Text("Settings")
