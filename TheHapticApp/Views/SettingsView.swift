@@ -23,27 +23,35 @@ struct SettingsView: View {
 
     var body: some View {
         List {
-            Section {
+            Section("General") {
                 aboutButton
 
                 requestReviewButton
+            }
 
+            Section {
                 supportEmailButton
+
+                supportWebsiteButton
+
+                privacyPolicyButton
 
                 restorePurchasesButton
             } header: {
-                Text("About")
+                Text("Support")
             } footer: {
                 Text(viewModel.appVersionNumber)
                     .frame(maxWidth: .infinity)
+                    .padding(.top, 15)
+                    .foregroundStyle(.secondary)
             }
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
             MailView(result: $viewModel.mailResult)
         }
-        .alert(viewModel.mailErrorMessageTitle,
-               isPresented: $viewModel.showingMailError) { } message: {
-            Text(viewModel.mailErrorMessage)
+        .alert(viewModel.alertMessageTitle,
+               isPresented: $viewModel.showingAlert) { } message: {
+            Text(viewModel.alertMessage)
         }
                .navigationTitle("Settings")
     }
@@ -62,19 +70,19 @@ struct SettingsView: View {
     private var requestReviewButton: some View {
         Button(action: {}) {
             Button {
-                Task {
+                Task(priority: .userInitiated) {
                     requestReview()
                 }
             } label: {
-                    Text("Rate The Haptic App")
-                .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                .foregroundStyle(.blue)
+                Text("Rate The Haptic App")
+                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                    .foregroundStyle(.blue)
             }
             .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 0))
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
         .tint(.clear)
     }
 
@@ -91,14 +99,52 @@ struct SettingsView: View {
             .buttonBorderShape(.roundedRectangle(radius: 0))
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
+        .tint(.clear)
+    }
+
+    private var supportWebsiteButton: some View {
+        Button(action: {}) {
+            Button {
+                guard let url = Constants.appSupportPageURL else { return }
+                openURL(url)
+            } label: {
+                Text(viewModel.supportWebsiteButtonText)
+                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                    .foregroundStyle(.blue)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 0))
+        }
+        .buttonStyle(.plain)
+        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
+        .tint(.clear)
+    }
+
+    private var privacyPolicyButton: some View {
+        Button(action: {}) {
+            Button {
+                guard let url = Constants.appPrivacyPolicyURL else { return }
+                openURL(url)
+            } label: {
+                Text(viewModel.privacyPolicyWebsiteButtonText)
+                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
+                    .foregroundStyle(.blue)
+            }
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 0))
+        }
+        .buttonStyle(.plain)
+        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
         .tint(.clear)
     }
 
     private var restorePurchasesButton: some View {
         Button(action: {}) {
             Button {
-                viewModel.supportEmailButtonTapped()
+                Task(priority: .userInitiated) {
+                    await viewModel.restorePurchasesButtonTapped()
+                }
             } label: {
                 Text(viewModel.restorePurchasesButtonText)
                     .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
@@ -108,38 +154,8 @@ struct SettingsView: View {
             .buttonBorderShape(.roundedRectangle(radius: 0))
         }
         .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 7, bottom: 0, trailing: 0))
+        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
         .tint(.clear)
-    }
-
-    private var testButton: some View {
-        Button(action: {}) {
-            Button(action: {
-                print("hi")
-            }) {
-                Text("Purchase Premium for $0.99")
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity, minHeight: 30)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
-        }
-        .buttonStyle(.plain)
-        .listRowBackground(EmptyView())
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-        .tint(.blue)
-    }
-
-    private var appVersionNumberTag: some View {
-        VStack {
-            Text(viewModel.appVersionNumber)
-                .frame(maxWidth: .infinity)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-        .listRowBackground(EmptyView())
-        .listRowInsets(.init(top: 0, leading: 0, bottom: 30, trailing: 0))
     }
 }
 

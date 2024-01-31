@@ -28,4 +28,7 @@ struct Constants {
     static let oceanColor: String = "Ocean"
     static let roseColor: String = "Rose"
     static let sageColor: String = "Sage"
+
+    // MARK: - RevenueCat Premium Entitlement
+    static var premiumEntitlement: String = "TheHapticApp.Premium"
 }

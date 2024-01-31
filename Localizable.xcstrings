@@ -7,13 +7,16 @@
     "About" : {
 
     },
-    "Appearance (Premium)" : {
-
-    },
     "Calm through haptics." : {
 
     },
     "Color Picker" : {
+
+    },
+    "Contact Us" : {
+
+    },
+    "Customize" : {
 
     },
     "Customize Appearance" : {
@@ -22,10 +25,16 @@
     "Dot Size" : {
 
     },
-    "Error sending mail." : {
+    "Error restoring purchases" : {
+
+    },
+    "Error sending mail" : {
 
     },
     "Feedback Intensity" : {
+
+    },
+    "General" : {
 
     },
     "Grid Color" : {
@@ -37,10 +46,13 @@
     "Grid Rows" : {
 
     },
-    "Need Support?" : {
+    "No Purchases" : {
 
     },
     "Premium Enabled" : {
+
+    },
+    "Privacy Policy" : {
 
     },
     "Purchase Premium for $0.99" : {
@@ -55,6 +67,15 @@
     "Settings" : {
 
     },
+    "Success" : {
+
+    },
+    "Support" : {
+
+    },
+    "Support Website" : {
+
+    },
     "Swipe to Open" : {
 
     },
@@ -64,7 +85,13 @@
     "The Haptic App, v%@" : {
 
     },
+    "There were no purchases restored." : {
+
+    },
     "Unable to send email from app. Are you using the Mail app?" : {
+
+    },
+    "Your purchases were restored successfully!" : {
 
     }
   },

@@ -52,7 +52,7 @@ struct MainView: View {
                         ProfileView()
                     } label: {
                         HStack {
-                            Text("Customize Appearance")
+                            Text("Customize")
                             Image(systemName: "paintpalette")
                         }
                     }

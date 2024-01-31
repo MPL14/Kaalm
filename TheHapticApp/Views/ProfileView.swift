@@ -25,7 +25,7 @@ struct ProfileView: View {
     var body: some View {
         List {
             Group {
-                Section("Appearance (Premium)") {
+                Section("Customize") {
                     appearanceControls
 
                     manuallyPurchasePremiumButton
@@ -42,12 +42,15 @@ struct ProfileView: View {
             self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
         }
         .presentPaywallIfNeeded(
-            requiredEntitlementIdentifier: PurchaseManager.premiumEntitlement,
+            requiredEntitlementIdentifier: Constants.premiumEntitlement,
             purchaseCompleted: { customerInfo in
-                print("Purchase completed: \(customerInfo.entitlements)")
+                print(customerInfo)
+                self.isPremiumUnlocked = true
             }, restoreCompleted: { customerInfo in
-                // Paywall will be dismissed automatically if "pro" is now active.
-                print("Purchases restored: \(customerInfo.entitlements)")
+                print(customerInfo)
+                Task {
+                    self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
+                }
             })
         .sheet(isPresented: self.$manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)

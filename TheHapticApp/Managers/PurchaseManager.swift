@@ -8,13 +8,15 @@
 import RevenueCat
 import SwiftUI
 
+private enum RestorePurchaseError: Error {
+    case couldNotRestorePurchase
+}
+
 final class PurchaseManager {
     static let shared = PurchaseManager()
 
-    static var premiumEntitlement: String = "TheHapticApp.Premium"
-
     public func isPremiumUnlocked() async -> Bool {
-        return (try? await Purchases.shared.customerInfo())?.entitlements["TheHapticApp.Premium"]?.isActive == true
+        return (try? await Purchases.shared.customerInfo())?.entitlements[Constants.premiumEntitlement]?.isActive == true
     }
 
     public func initialize() {
@@ -22,5 +24,20 @@ final class PurchaseManager {
         Purchases.logLevel = .debug
         #endif
         Purchases.configure(withAPIKey: rcPublicApiKey)
+    }
+
+    public func restorePurchases() async -> Result<Bool, Error> {
+        do {
+            let customerInfo = try await Purchases.shared.restorePurchases()
+
+            // The restore process can be successful but not 
+            // restore e.g. if a user never purchased premium access.
+            let successfulRestore = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true
+            return .success(successfulRestore)
+        } catch {
+            // If the restore process throws an error,
+            // return failure.
+            return .failure(error)
+        }
     }
 }

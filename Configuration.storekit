@@ -12,7 +12,7 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "premium_lifetime",
+      "productID" : "theHapticApp_premium_099",
       "referenceName" : "The Haptic App Premium",
       "type" : "NonRenewingSubscription"
     }
@@ -22,6 +22,8 @@
   ],
   "settings" : {
     "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
