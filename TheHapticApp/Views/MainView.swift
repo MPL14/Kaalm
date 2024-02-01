@@ -21,7 +21,7 @@ struct MainView: View {
     @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
     @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
-    @AppStorage(Constants.myColor) var myColor: String = "Default"
+    @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
 
     var body: some View {
         NavigationStack {
@@ -37,8 +37,8 @@ struct MainView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .foregroundStyle(Color("Default"))
-        .tint(Color("Default"))
+        .foregroundStyle(Color(Constants.defaultColor))
+        .tint(Color(Constants.defaultColor))
         .environmentObject(hapticEngine)
     }
 
@@ -51,7 +51,7 @@ struct MainView: View {
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
-                    NewSettingsView(settingsViewModel)
+                    SettingsView(settingsViewModel)
                 } label: {
                     Image(systemName: "person.circle")
                         .font(.system(size: 24, weight: .semibold))

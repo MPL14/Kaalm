@@ -22,11 +22,10 @@ struct SettingsView: View {
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
+    @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
 
     // MARK: - State
     @ObservedObject private var viewModel: SettingsViewModel
-    @State private var isPremiumUnlocked: Bool = false
-    @State private var manuallyShowPaywall: Bool = false
 
     init(_ viewModel: SettingsViewModel) {
         self.viewModel = viewModel
@@ -34,13 +33,13 @@ struct SettingsView: View {
 
     var body: some View {
         List {
-            Section("General") {
+            Section(viewModel.generalSectionText) {
                 aboutButton
 
                 requestReviewButton
             }
 
-            Section("Customize") {
+            Section(viewModel.customizeSectionText) {
                 appearanceControls
 
                 manuallyPurchasePremiumButton
@@ -61,7 +60,7 @@ struct SettingsView: View {
 
                 restorePurchasesButton
             } header: {
-                Text("Support")
+                Text(viewModel.supportSectionText)
             } footer: {
                 Text(viewModel.appVersionNumber)
                     .frame(maxWidth: .infinity)
@@ -69,22 +68,18 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .tint(Color("Default"))
-        .navigationTitle("Settings")
+        .tint(Color(Constants.defaultColor))
+        .navigationTitle(viewModel.settingsViewTitle)
         .task {
-            self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
+            await self.viewModel.verifyPremiumUnlocked()
         }
-        .sheet(isPresented: self.$manuallyShowPaywall) {
+        .sheet(isPresented: self.$viewModel.manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)
-                .onPurchaseCompleted({ customerInfo in
-                    print(customerInfo)
-                    self.isPremiumUnlocked = true
-                })
+                .onPurchaseCompleted { customerInfo in
+                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
+                }
                 .onRestoreCompleted { customerInfo in
-                    print(customerInfo)
-                    Task {
-                        self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
-                    }
+                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
                 }
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
@@ -103,134 +98,92 @@ struct SettingsView: View {
                 Text("About")
             }
         } label: {
-            Text("About")
+            Text(viewModel.aboutButtonText)
         }
     }
 
     private var requestReviewButton: some View {
-        Button(action: {}) {
-            Button {
-                Task(priority: .userInitiated) {
-                    requestReview()
-                }
-            } label: {
-                Text("Rate The Haptic App")
-                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                    .foregroundStyle(.blue)
+        LinkListButton(labelText: viewModel.rateButtonText) {
+            Task {
+                requestReview()
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
         }
-        .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
-        .tint(.clear)
     }
 
     private var supportEmailButton: some View {
-        Button(action: {}) {
-            Button {
-                viewModel.supportEmailButtonTapped()
-            } label: {
-                Text(viewModel.supportEmailButtonText)
-                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
+        LinkListButton(labelText: viewModel.supportEmailButtonText) {
+            viewModel.supportEmailButtonTapped()
         }
-        .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
-        .tint(.clear)
     }
 
     private var supportWebsiteButton: some View {
-        Button(action: {}) {
-            Button {
-                guard let url = Constants.appSupportPageURL else { return }
-                openURL(url)
-            } label: {
-                Text(viewModel.supportWebsiteButtonText)
-                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
+        LinkListButton(labelText: viewModel.supportWebsiteButtonText) {
+            guard let url = Constants.appSupportPageURL else { return }
+            openURL(url)
         }
-        .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
-        .tint(.clear)
     }
 
     private var privacyPolicyButton: some View {
-        Button(action: {}) {
-            Button {
-                guard let url = Constants.appPrivacyPolicyURL else { return }
-                openURL(url)
-            } label: {
-                Text(viewModel.privacyPolicyWebsiteButtonText)
-                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                    .foregroundStyle(.blue)
-            }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
+        LinkListButton(labelText: viewModel.privacyPolicyWebsiteButtonText) {
+            guard let url = Constants.appPrivacyPolicyURL else { return }
+            openURL(url)
         }
-        .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
-        .tint(.clear)
     }
 
     private var restorePurchasesButton: some View {
-        Button(action: {}) {
-            Button {
-                Task(priority: .userInitiated) {
-                    await viewModel.restorePurchasesButtonTapped()
-                }
-            } label: {
-                Text(viewModel.restorePurchasesButtonText)
-                    .frame(maxWidth: .infinity, minHeight: 30, alignment: .leading)
-                    .foregroundStyle(.blue)
+        LinkListButton(labelText: viewModel.restorePurchasesButtonText) {
+            Task(priority: .userInitiated) {
+                await viewModel.restorePurchasesButtonTapped()
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.roundedRectangle(radius: 0))
         }
-        .buttonStyle(.plain)
-        .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
-        .tint(.clear)
     }
 
     private var appearanceControls: some View {
         Group {
             HStack {
-                Text("Grid Rows")
+                Text(viewModel.gridRowsTitle)
                 Slider(value: $currentGridRows, in: 3...18)
             }
 
             HStack {
-                Text("Grid Columns")
+                Text(viewModel.gridColsTitle)
                 Slider(value: $currentGridCols, in: 3...18)
             }
 
             HStack {
-                Text("Dot Size")
+                Text(viewModel.gridDotSizeTitle)
                 Slider(value: $currentDotSize, in: 3...20)
             }
 
             HStack {
-                Text("Feedback Intensity")
+                Text(viewModel.gridFeedbackIntensityTitle)
                 Slider(value: $feedbackIntensity, in: 0...1)
+            }
+
+            HStack {
+                Toggle(isOn: $hapticsEnabled) {
+                    Text(viewModel.gridHapticsEnabledTitle)
+                }
+                .tint(.green)
             }
 
             HStack {
                 CustomColorPicker(selectedColor: $myColor)
                     .colors(
-                        [Constants.defaultColor, Constants.clayColor, Constants.oceanColor, Constants.roseColor, Constants.sageColor]
+                        [
+                            Constants.defaultColor,
+                            Constants.clayColor,
+                            Constants.oceanColor,
+                            Constants.roseColor,
+                            Constants.sageColor
+                        ]
                     )
                     .title("Grid Color")
                     .highlightColor(Color(Constants.defaultColor))
             }
         }
         .disabled(
-            !isPremiumUnlocked
+            !self.viewModel.isPremiumUnlocked
         )
     }
 
@@ -240,12 +193,12 @@ struct SettingsView: View {
     // getting a seamless looking button.
     private var manuallyPurchasePremiumButton: some View {
         Button(action: {}) {
-            Button(action: {
-                if !self.isPremiumUnlocked {
-                    self.manuallyShowPaywall = true
+            Button {
+                if !self.viewModel.isPremiumUnlocked {
+                    self.viewModel.manuallyShowPaywall = true
                 }
-            }) {
-                Text(self.isPremiumUnlocked ? "Premium Enabled" : "Purchase Premium for $0.99 to Unlock")
+            } label: {
+                Text(self.viewModel.isPremiumUnlocked ? viewModel.premiumEnabledTitle : viewModel.premiumNotEnabledTitle)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, minHeight: 30)
                     .foregroundStyle(.blue)
@@ -257,7 +210,7 @@ struct SettingsView: View {
         .listRowBackground(EmptyView())
         .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
         .tint(.blue)
-        .allowsHitTesting(!self.isPremiumUnlocked)
+        .allowsHitTesting(!self.viewModel.isPremiumUnlocked)
     }
 }
 

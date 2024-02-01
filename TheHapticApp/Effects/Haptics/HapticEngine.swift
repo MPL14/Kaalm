@@ -11,8 +11,10 @@ import SwiftUI
 /// A class for playing haptics. Using a class allows to create only one
 /// haptic engine for the whole app.
 final class HapticEngine: HapticPlaying, ObservableObject {
-    // MARK: - State
-    @Published var deviceSupportsHaptics: Bool = true
+    @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
+
+//    // MARK: - State
+//    @Published var deviceSupportsHaptics: Bool = true
 
     // MARK: - Properties
     private var hapticEngine: CHHapticEngine?
@@ -74,8 +76,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// Synchronously start the haptic engine if needed and then
     /// play a haptic based on the input haptic type.
     public func playHaptic(_ hapticType: HapticType) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            deviceSupportsHaptics = false
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics && hapticsEnabled else {
             return
         }
 
@@ -110,8 +111,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// play a haptic based on the input haptic type through the start
     /// function's completion handler.
     public func asyncPlayHaptic(_ hapticType: HapticType) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            deviceSupportsHaptics = false
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics && hapticsEnabled else {
             return
         }
 
@@ -151,8 +151,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// plays a single haptic based on the input through a completion
     /// handler.
     func asyncPlayHaptic(intensity: CGFloat, sharpness: CGFloat) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            deviceSupportsHaptics = false
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics && hapticsEnabled else {
             return
         }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HapticGrid<H: HapticPlaying>: View {
-    @AppStorage("feedbackIntensity") private var feedbackIntensity: Double = 1.0
+    @AppStorage(Constants.feedbackIntensity) private var feedbackIntensity: Double = 1.0
 
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: H

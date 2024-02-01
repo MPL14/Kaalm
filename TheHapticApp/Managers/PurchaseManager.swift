@@ -25,8 +25,7 @@ final class PurchaseManager {
     public func restorePurchases() async -> Result<Bool, Error> {
         do {
             let customerInfo = try await Purchases.shared.restorePurchases()
-            print("here is the customerinfo after restore")
-            print(customerInfo)
+
             // The restore process can be successful but not
             // restore e.g. if a user never purchased premium access.
             let successfulRestore = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true

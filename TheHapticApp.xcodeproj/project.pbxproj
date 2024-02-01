@@ -23,6 +23,7 @@
 		441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B72B62D87900CF4DFF /* HapticPlaying.swift */; };
 		443ED92D2B6C167700FF9FE6 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED92C2B6C167700FF9FE6 /* TitleView.swift */; };
 		443ED92F2B6C176A00FF9FE6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED92E2B6C176A00FF9FE6 /* SettingsView.swift */; };
+		443ED9312B6C32A300FF9FE6 /* LinkListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */; };
 		4450CA052B684DDA008093B6 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 4450CA042B684DDA008093B6 /* Configuration.storekit */; };
 		4450CA0A2B685069008093B6 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA092B685069008093B6 /* RevenueCat */; };
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
@@ -60,6 +61,7 @@
 		441B21B72B62D87900CF4DFF /* HapticPlaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticPlaying.swift; sourceTree = "<group>"; };
 		443ED92C2B6C167700FF9FE6 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		443ED92E2B6C176A00FF9FE6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkListButton.swift; sourceTree = "<group>"; };
 		4450CA042B684DDA008093B6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4450CA112B6850B9008093B6 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				4465D2B62B642A3B00BD0B01 /* HapticGrid */,
 				44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */,
 				443ED92C2B6C167700FF9FE6 /* TitleView.swift */,
+				443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				440B74442B69794A0060974A /* HapticEvents.swift in Sources */,
 				4450CA182B685652008093B6 /* Secrets.swift in Sources */,
 				44BB04372B63169600865B00 /* RubberBanding.swift in Sources */,
+				443ED9312B6C32A300FF9FE6 /* LinkListButton.swift in Sources */,
 				443ED92F2B6C176A00FF9FE6 /* SettingsView.swift in Sources */,
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,

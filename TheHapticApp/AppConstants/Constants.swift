@@ -20,6 +20,7 @@ struct Constants {
     static let gridRows: String = "gridRows"
     static let gridCols: String = "gridCols"
     static let myColor: String = "myColor"
+    static let hapticsEnabled: String = "hapticsEnabled"
 
     // MARK: - Stock Color Assets
     static let backgroundColor: String = "Background"

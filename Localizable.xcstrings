@@ -19,9 +19,6 @@
     "Customize" : {
 
     },
-    "Customize Appearance" : {
-
-    },
     "Dot Size" : {
 
     },
@@ -46,6 +43,9 @@
     "Grid Rows" : {
 
     },
+    "Haptics Enabled" : {
+
+    },
     "No Purchases" : {
 
     },
@@ -53,9 +53,6 @@
 
     },
     "Privacy Policy" : {
-
-    },
-    "Purchase Premium for $0.99" : {
 
     },
     "Purchase Premium for $0.99 to Unlock" : {
