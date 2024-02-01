@@ -12,6 +12,10 @@ struct MainView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
+    // The Settings view has sliders which update AppStorage values
+    // which obviously are also used here. Updating them causes the
+    // settingsViewModel to be reinitialized a ton. Initializing it here
+    // then passing it to SettingsView below solves this issue.
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
@@ -46,24 +50,8 @@ struct MainView: View {
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-//                    NavigationLink {
-//                        ProfileView()
-//                    } label: {
-//                        HStack {
-//                            Text("Customize")
-//                            Image(systemName: "paintpalette")
-//                        }
-//                    }
-
-                    NavigationLink {
-                        NewSettingsView(settingsViewModel)
-                    } label: {
-                        HStack {
-                            Text("Settings")
-                            Image(systemName: "gear")
-                        }
-                    }
+                NavigationLink {
+                    NewSettingsView(settingsViewModel)
                 } label: {
                     Image(systemName: "person.circle")
                         .font(.system(size: 24, weight: .semibold))
