@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct HapticGrid<H: HapticPlaying>: View {
-    @AppStorage(Constants.feedbackIntensity) private var feedbackIntensity: Double = 1.0
-
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: H
 
@@ -27,6 +25,9 @@ struct HapticGrid<H: HapticPlaying>: View {
 
     private var hapticDotColor: Color = .primary
     private var colorAnimationDuration: CGFloat = 0.5
+
+    private var feedbackSharpness: Double = 1.0
+    private var feedbackIntensity: Double = 1.0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -80,7 +81,7 @@ struct HapticGrid<H: HapticPlaying>: View {
                                 let insertion = touchedGridPoints.insert(touchedDotData.gridPoint)
                                 if insertion.inserted {
                                     hapticEngine.asyncPlayHaptic(
-                                        intensity: feedbackIntensity, sharpness: feedbackIntensity
+                                        intensity: feedbackIntensity, sharpness: feedbackSharpness
                                     )
                                 }
                             }
@@ -145,6 +146,16 @@ struct HapticGrid<H: HapticPlaying>: View {
     public func dotColor(_ color: Color) -> HapticGrid {
         var view = self
         view.hapticDotColor = color
+        return view
+    }
+
+    /// Changes the default feedback intensity and sharpness.
+    /// - Parameter intensity
+    /// - Parameter sharpness
+    public func feedback(_ intensity: Double, _ sharpness: Double) -> HapticGrid {
+        var view = self
+        view.feedbackIntensity = intensity
+        view.feedbackSharpness = sharpness
         return view
     }
 }

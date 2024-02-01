@@ -21,6 +21,7 @@ struct SettingsView: View {
     @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
+    @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
     @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
 
@@ -47,7 +48,13 @@ struct SettingsView: View {
             .onChange(of: feedbackIntensity) { value in
                 hapticEngine.asyncPlayHaptic(
                     intensity: feedbackIntensity,
-                    sharpness: feedbackIntensity
+                    sharpness: feedbackSharpness
+                )
+            }
+            .onChange(of: feedbackSharpness) { value in
+                hapticEngine.asyncPlayHaptic(
+                    intensity: feedbackIntensity,
+                    sharpness: feedbackSharpness
                 )
             }
 
@@ -158,6 +165,11 @@ struct SettingsView: View {
             HStack {
                 Text(viewModel.gridFeedbackIntensityTitle)
                 Slider(value: $feedbackIntensity, in: 0...1)
+            }
+
+            HStack {
+                Text(viewModel.gridFeedbackSharpnessTitle)
+                Slider(value: $feedbackSharpness, in: 0...1)
             }
 
             HStack {

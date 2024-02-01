@@ -10,5 +10,5 @@ import Foundation
 protocol HapticPlaying: ObservableObject {
     func playHaptic(_ hapticType: HapticType)
     func asyncPlayHaptic(_ hapticType: HapticType)
-    func asyncPlayHaptic(intensity: CGFloat, sharpness: CGFloat)
+    func asyncPlayHaptic(intensity: Double, sharpness: Double)
 }

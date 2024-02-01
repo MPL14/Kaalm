@@ -150,7 +150,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     /// Asynchronously starts the haptic engine if needed and then
     /// plays a single haptic based on the input through a completion
     /// handler.
-    func asyncPlayHaptic(intensity: CGFloat, sharpness: CGFloat) {
+    func asyncPlayHaptic(intensity: Double, sharpness: Double) {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics && hapticsEnabled else {
             return
         }

@@ -22,6 +22,8 @@ struct MainView: View {
     @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
+    @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
+    @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
 
     var body: some View {
         NavigationStack {
@@ -31,6 +33,7 @@ struct MainView: View {
                     .dotSize(CGFloat(currentDotSize))
                     .dotPadding()
                     .dotColor(Color(myColor))
+                    .feedback(feedbackIntensity, feedbackSharpness)
             }
             .toolbar {
                 toolbarView

@@ -43,6 +43,7 @@ final class SettingsViewModel: ObservableObject {
     public let gridColsTitle: String = String(localized: "Grid Columns")
     public let gridDotSizeTitle: String = String(localized: "Dot Size")
     public let gridFeedbackIntensityTitle: String = String(localized: "Feedback Intensity")
+    public let gridFeedbackSharpnessTitle: String = String(localized: "Feedback Sharpness")
     public let gridHapticsEnabledTitle: String = String(localized: "Haptics Enabled")
 
     public let premiumEnabledTitle: String = String(localized: "Premium Enabled")
