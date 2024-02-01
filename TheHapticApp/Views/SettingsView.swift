@@ -101,9 +101,7 @@ struct SettingsView: View {
     // MARK: - Subviews
     private var aboutButton: some View {
         NavigationLink {
-            VStack {
-                Text("About")
-            }
+            AboutView()
         } label: {
             Text(viewModel.aboutButtonText)
         }
@@ -185,9 +183,10 @@ struct SettingsView: View {
                         [
                             Constants.defaultColor,
                             Constants.clayColor,
+                            Constants.sageColor,
                             Constants.oceanColor,
                             Constants.roseColor,
-                            Constants.sageColor
+                            Constants.wineColor
                         ]
                     )
                     .title("Grid Color")
