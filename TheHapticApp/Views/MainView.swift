@@ -42,7 +42,7 @@ struct MainView: View {
     private var toolbarView: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
-                TitleView()
+                
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {

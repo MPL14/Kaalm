@@ -25,9 +25,9 @@ struct TheHapticApp: App {
                     MainView()
                 }
             }
+            .animation(.easeIn, value: self.onboardingComplete)
             .transition(.opacity)
             .environmentObject(hapticEffects)
-            .animation(.easeIn, value: self.onboardingComplete)
         }
     }
 } 

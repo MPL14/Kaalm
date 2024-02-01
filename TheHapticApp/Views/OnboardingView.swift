@@ -29,13 +29,12 @@ struct OnboardingView: View {
             )
             .ignoresSafeArea()
 
-            VStack(spacing: 10) {
+            VStack(spacing: 20) {
                 TitleView()
-                    .foregroundStyle(.white)
 
                 Text("Calm through haptics.")
-                    .foregroundStyle(.white)
             }
+            .foregroundStyle(.white)
             .frame(maxHeight: .infinity)
             .safeAreaInset(edge: .bottom) {
                 VStack(spacing: 15) {

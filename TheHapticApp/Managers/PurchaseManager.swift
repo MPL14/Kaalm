@@ -8,10 +8,6 @@
 import RevenueCat
 import SwiftUI
 
-private enum RestorePurchaseError: Error {
-    case couldNotRestorePurchase
-}
-
 final class PurchaseManager {
     static let shared = PurchaseManager()
 

@@ -28,10 +28,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
     // MARK: - Private Methods
     /// A synchronous function to start the haptic engine.
     private func syncPrepareHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            print("The device does not support haptics.")
-            return
-        }
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
         do {
             hapticEngine = try CHHapticEngine()
@@ -43,7 +40,6 @@ final class HapticEngine: HapticPlaying, ObservableObject {
             }
 
             try hapticEngine?.start()
-            print("Haptic engine started.")
         } catch {
             print("There was an error creating the haptic engine: \(error.localizedDescription)")
         }
@@ -51,10 +47,7 @@ final class HapticEngine: HapticPlaying, ObservableObject {
 
     /// An asynchronous function to start the haptic engine.
     private func asyncPrepareHaptics(_ completion: @escaping () -> Void) {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
-            print("The device does not support haptics.")
-            return
-        }
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
 
         do {
             hapticEngine = try CHHapticEngine()
@@ -63,7 +56,6 @@ final class HapticEngine: HapticPlaying, ObservableObject {
             /// stopped by the system.
             hapticEngine?.stoppedHandler = { [weak self] _ in
                 self?.hapticEngineWasStopped = true
-                print("hapticEngine stopped async")
             }
 
             hapticEngine?.start(completionHandler: { error in
@@ -73,8 +65,6 @@ final class HapticEngine: HapticPlaying, ObservableObject {
                     completion()
                 }
             })
-
-            print("Haptic engine asynchronously started.")
         } catch {
             print("There was an error asynchronously creating the haptic engine: \(error.localizedDescription)")
         }
