@@ -28,25 +28,26 @@ struct AboutView: View {
     }
 
     var body: some View {
-            ScrollView {
-                VStack(spacing: 20) {
-                    HStack {
-                        Image("TheHapticAppIcon")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                            .clipShape(.rect(cornerRadius: 20, style: .circular))
-                            .shadow(radius: 5)
-                        Text(appVersionNumber)
-                            .font(.headline)
-                            .padding()
-                    }
-
-                    Text(aboutText)
-                        .multilineTextAlignment(.leading)
+        ScrollView {
+            VStack(spacing: 20) {
+                HStack {
+                    Image("TheHapticAppIcon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100)
+                        .clipShape(.rect(cornerRadius: 20, style: .circular))
+                        .shadow(radius: 5)
+                    Text(appVersionNumber)
+                        .font(.headline)
+                        .padding()
                 }
-                .padding(18)
+
+                Text(aboutText)
+                    .multilineTextAlignment(.leading)
+            }
+            .padding(18)
         }
+        .navigationTitle("About")
     }
 }
 
