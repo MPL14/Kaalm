@@ -12,7 +12,7 @@ struct MainView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
-    @State private var settingsViewModel: SettingsViewModel = SettingsViewModel()
+    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
     @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
@@ -42,22 +42,22 @@ struct MainView: View {
     private var toolbarView: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
-                
+                TitleView()
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        HStack {
-                            Text("Customize")
-                            Image(systemName: "paintpalette")
-                        }
-                    }
+//                    NavigationLink {
+//                        ProfileView()
+//                    } label: {
+//                        HStack {
+//                            Text("Customize")
+//                            Image(systemName: "paintpalette")
+//                        }
+//                    }
 
                     NavigationLink {
-                        SettingsView(settingsViewModel)
+                        NewSettingsView(settingsViewModel)
                     } label: {
                         HStack {
                             Text("Settings")
