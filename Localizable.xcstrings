@@ -19,9 +19,6 @@
     "Customize" : {
 
     },
-    "Customize Appearance" : {
-
-    },
     "Dot Size" : {
 
     },
@@ -32,6 +29,9 @@
 
     },
     "Feedback Intensity" : {
+
+    },
+    "Feedback Sharpness" : {
 
     },
     "General" : {
@@ -46,6 +46,9 @@
     "Grid Rows" : {
 
     },
+    "Haptics Enabled" : {
+
+    },
     "No Purchases" : {
 
     },
@@ -55,7 +58,7 @@
     "Privacy Policy" : {
 
     },
-    "Purchase Premium for $0.99" : {
+    "Purchase Premium for $0.99 to Unlock" : {
 
     },
     "Rate The Haptic App" : {

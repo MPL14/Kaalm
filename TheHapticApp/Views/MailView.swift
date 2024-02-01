@@ -15,6 +15,9 @@ struct MailView: UIViewControllerRepresentable {
     // MARK: - State
     @Binding var result: Result<MFMailComposeResult, Error>?
 
+    private let emailSubjectLine: String = "Feedback for The Haptic App"
+    private let emailAddress: String = "thehapticapp@gmail.com"
+
     // Coordinator acts like the delegate object.
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         // MARK: - Coordinator State
@@ -52,8 +55,8 @@ struct MailView: UIViewControllerRepresentable {
         let vc = MFMailComposeViewController()
         vc.mailComposeDelegate = context.coordinator
 
-        vc.setSubject("Feedback for The Haptic App")
-        vc.setToRecipients(["thehapticapp@gmail.com"])
+        vc.setSubject(emailSubjectLine)
+        vc.setToRecipients([emailAddress])
 
         return vc
     }

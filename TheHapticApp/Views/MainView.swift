@@ -12,12 +12,18 @@ struct MainView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
 
     // MARK: - State
-    @State private var settingsViewModel: SettingsViewModel = SettingsViewModel()
+    // The Settings view has sliders which update AppStorage values
+    // which obviously are also used here. Updating them causes the
+    // settingsViewModel to be reinitialized a ton. Initializing it here
+    // then passing it to SettingsView below solves this issue.
+    @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
     @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
-    @AppStorage(Constants.myColor) var myColor: String = "Default"
+    @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
+    @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
+    @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
 
     var body: some View {
         NavigationStack {
@@ -27,14 +33,15 @@ struct MainView: View {
                     .dotSize(CGFloat(currentDotSize))
                     .dotPadding()
                     .dotColor(Color(myColor))
+                    .feedback(feedbackIntensity, feedbackSharpness)
             }
             .toolbar {
                 toolbarView
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .foregroundStyle(Color("Default"))
-        .tint(Color("Default"))
+        .foregroundStyle(Color(Constants.defaultColor))
+        .tint(Color(Constants.defaultColor))
         .environmentObject(hapticEngine)
     }
 
@@ -42,28 +49,12 @@ struct MainView: View {
     private var toolbarView: some ToolbarContent {
         Group {
             ToolbarItem(placement: .topBarLeading) {
-                
+                TitleView()
             }
 
             ToolbarItem(placement: .navigationBarTrailing) {
-                Menu {
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        HStack {
-                            Text("Customize")
-                            Image(systemName: "paintpalette")
-                        }
-                    }
-
-                    NavigationLink {
-                        SettingsView(settingsViewModel)
-                    } label: {
-                        HStack {
-                            Text("Settings")
-                            Image(systemName: "gear")
-                        }
-                    }
+                NavigationLink {
+                    SettingsView(settingsViewModel)
                 } label: {
                     Image(systemName: "person.circle")
                         .font(.system(size: 24, weight: .semibold))
