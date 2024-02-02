@@ -28,15 +28,16 @@ struct AboutView: View {
     }
 
     var body: some View {
-        ScrollView {
+        List {
             VStack(spacing: 20) {
                 HStack {
                     Image("TheHapticAppIcon")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100)
+                        .frame(width: 80)
                         .clipShape(.rect(cornerRadius: 20, style: .circular))
                         .shadow(radius: 5)
+
                     Text(appVersionNumber)
                         .font(.headline)
                         .padding()
@@ -45,7 +46,7 @@ struct AboutView: View {
                 Text(aboutText)
                     .multilineTextAlignment(.leading)
             }
-            .padding(18)
+            .padding(.vertical)
         }
         .navigationTitle("About")
     }

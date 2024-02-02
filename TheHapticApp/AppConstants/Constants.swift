@@ -24,6 +24,15 @@ struct Constants {
     static let myColor: String = "myColor"
     static let hapticsEnabled: String = "hapticsEnabled"
 
+    // Min and max dot size, grid size.
+    static let defaultGridSize: Double = 16.0
+    static let defaultDotSize: Double = 10.0
+    
+    static let minGridSize: Double = 3.0
+    static let maxGridSize: Double = 30.0
+    static let minDotSize: Double = 3.0
+    static let maxDotSize: Double = 20.0
+
     // MARK: - Stock Color Assets
     static let backgroundColor: String = "Background"
     static let defaultColor: String = "Default"

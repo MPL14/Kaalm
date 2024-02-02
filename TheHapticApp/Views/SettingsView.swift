@@ -17,9 +17,9 @@ struct SettingsView: View {
     @Environment(\.requestReview) var requestReview
     @Environment(\.openURL) var openURL
 
-    @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
-    @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
-    @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
+    @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
+    @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
+    @AppStorage(Constants.dotSize) var currentDotSize: Double = Constants.defaultDotSize
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
     @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
@@ -93,8 +93,9 @@ struct SettingsView: View {
         .sheet(isPresented: $viewModel.isShowingMailView) {
             MailView(result: $viewModel.mailResult)
         }
-        .alert(viewModel.alertMessageTitle,
-               isPresented: $viewModel.showingAlert) { } message: {
+        .alert(viewModel.alertMessageTitle, isPresented: $viewModel.showingAlert) {
+            Button("OK") { }
+        } message: {
             Text(viewModel.alertMessage)
         }
     }
@@ -148,17 +149,17 @@ struct SettingsView: View {
         Group {
             HStack {
                 Text(viewModel.gridRowsTitle)
-                Slider(value: $currentGridRows, in: 3...18)
+                Slider(value: $currentGridRows, in: Constants.minGridSize...Constants.maxGridSize)
             }
 
             HStack {
                 Text(viewModel.gridColsTitle)
-                Slider(value: $currentGridCols, in: 3...18)
+                Slider(value: $currentGridCols, in: Constants.minGridSize...Constants.maxGridSize)
             }
 
             HStack {
                 Text(viewModel.gridDotSizeTitle)
-                Slider(value: $currentDotSize, in: 3...20)
+                Slider(value: $currentDotSize, in: Constants.minDotSize...Constants.maxDotSize)
             }
 
             HStack {
@@ -173,7 +174,7 @@ struct SettingsView: View {
 
             HStack {
                 Toggle(viewModel.gridHapticsEnabledTitle, isOn: $hapticsEnabled)
-                .tint(.green)
+                    .tint(.green)
             }
 
             HStack {
@@ -233,5 +234,6 @@ struct SettingsView: View {
     NavigationStack {
         SettingsView(SettingsViewModel())
             .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(HapticEngine())
     }
 }
