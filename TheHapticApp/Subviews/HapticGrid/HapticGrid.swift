@@ -17,7 +17,7 @@ struct HapticGrid<H: HapticPlaying>: View {
     @State private var gridScale: CGSize = .zero
 
     // MARK: - Properties
-    private var gridDim: (Int, Int) = (3, 3)  // (row, column)
+    private var gridDim: (Int, Int) = (10, 10)  // (row, column)
 
     private var dotSize: CGFloat = 25
     private var dotPaddingEdges: Edge.Set = .all
@@ -30,11 +30,14 @@ struct HapticGrid<H: HapticPlaying>: View {
     private var feedbackIntensity: Double = 1.0
 
     var body: some View {
-        VStack(spacing: 0) {
-            ForEach(0..<gridDim.0, id: \.self) { row in
-                HStack(spacing: 0) {
-                    ForEach(0..<gridDim.1, id: \.self) { column in
-                        HapticDot(size: dotSize)
+        GeometryReader { viewGeo in
+            VStack(spacing: 0) {
+                ForEach(0..<gridDim.0, id: \.self) { row in
+                    HStack(spacing: 0) {
+                        ForEach(0..<gridDim.1, id: \.self) { column in
+                            HapticDot(
+                                size: determineIdealDotSize(viewGeo: viewGeo, defaultDotSize: dotSize, gridDim: gridDim)
+                            )
                             .padding(dotPaddingEdges, dotPadding)
                             .foregroundStyle(
                                 touchedGridPoints.contains(GridPoint(x: row, y: column)) ? Color.random : hapticDotColor
@@ -54,15 +57,17 @@ struct HapticGrid<H: HapticPlaying>: View {
                                         ]))
                                 }
                             )
+                        }
                     }
                 }
             }
-        }
-        .scaleEffect(gridScale, anchor: .center)
-        .onAppear {
-            withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
-                gridScale = CGSize(width: 1.0, height: 1.0)
+            .scaleEffect(gridScale, anchor: .center)
+            .onAppear {
+                withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
+                    gridScale = CGSize(width: 1.0, height: 1.0)
+                }
             }
+            .frame(width: viewGeo.size.width, height: viewGeo.size.height, alignment: .center)
         }
         // This PreferenceKey allows us to monitor the location and index
         // of each HapticDot and do stuff with that information.
@@ -102,6 +107,14 @@ struct HapticGrid<H: HapticPlaying>: View {
         )
     }
 
+    private func determineIdealDotSize(viewGeo: GeometryProxy, defaultDotSize: CGFloat, gridDim: (Int, Int)) -> CGFloat {
+        let idealWidth = min(defaultDotSize, (viewGeo.size.width - (CGFloat(gridDim.1)*dotPadding*2)) / CGFloat(gridDim.1))
+        let idealHeight = min(defaultDotSize, (viewGeo.size.height - (CGFloat(gridDim.0)*dotPadding*2)) / CGFloat(gridDim.0))
+        let idealSize = max(0, min(idealWidth, idealHeight))
+
+        return idealSize
+    }
+
     // MARK: - Modifiers
     /// Changes the number of dots on the grid.
     /// - Parameter x: Number of dots on x-axis.
@@ -122,22 +135,11 @@ struct HapticGrid<H: HapticPlaying>: View {
     }
 
     /// Changes the padding between the dots.
-    /// - Parameter edges: Which edges to apply the padding.
-    /// - Parameter length: How much padding to apply to the specified edges.
-    public func dotPadding(_ edges: Edge.Set = .all,
-                           _ length: CGFloat? = nil) -> HapticGrid {
-        var view = self
-        view.dotPaddingEdges = edges
-        view.dotPadding = length ?? 5
-        return view
-    }
-
-    /// Changes the padding between the dots.
     /// - Parameter length: How much padding to apply to the edges.
     public func dotPadding(_ length: CGFloat? = nil) -> HapticGrid {
         var view = self
         view.dotPaddingEdges = .all
-        view.dotPadding = length ?? 5
+        view.dotPadding = length ?? 3
         return view
     }
 
@@ -161,6 +163,8 @@ struct HapticGrid<H: HapticPlaying>: View {
 }
 
 #Preview {
-    HapticGrid<HapticEngine>()
-        .environmentObject(HapticEngine())
+    VStack {
+        HapticGrid<HapticEngine>()
+            .environmentObject(HapticEngine())
+    }
 }

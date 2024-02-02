@@ -16,7 +16,7 @@ struct HapticDot: View {
             .frame(width: size, height: size)
     }
 
-    init(color: Color = .black, size: CGFloat = 10) {
+    init(color: Color = .black, size: CGFloat = 10.0) {
         self.color = color
         self.size = size
     }
