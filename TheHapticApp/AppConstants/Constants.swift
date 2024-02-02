@@ -15,6 +15,7 @@ struct Constants {
     // MARK: - UserDefaults Keys
     static let onboardingComplete: String = "onboardingComplete"
 
+    static let darkModePreferred: String = "darkModePreferred"
     static let dotSize: String = "dotSize"
     static let feedbackIntensity: String = "feedbackIntensity"
     static let feedbackSharpness: String = "feedbackSharpness"

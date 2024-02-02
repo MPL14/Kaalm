@@ -15,6 +15,7 @@ struct TheHapticApp: App {
     @StateObject private var hapticEffects: HapticEngine = HapticEngine()
     
     @AppStorage(Constants.onboardingComplete) var onboardingComplete: Bool = false
+    @AppStorage(Constants.darkModePreferred) var darkModePreferred: Bool = false
 
     var body: some Scene {
         WindowGroup {
@@ -27,6 +28,7 @@ struct TheHapticApp: App {
             }
             .animation(.easeIn, value: self.onboardingComplete)
             .transition(.opacity)
+            .preferredColorScheme(darkModePreferred ? .dark : .light)
             .environmentObject(hapticEffects)
         }
     }

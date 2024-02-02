@@ -24,6 +24,7 @@ struct SettingsView: View {
     @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
     @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
+    @AppStorage(Constants.darkModePreferred) var darkModePreferred: Bool = false
 
     // MARK: - State
     @ObservedObject private var viewModel: SettingsViewModel
@@ -171,10 +172,13 @@ struct SettingsView: View {
             }
 
             HStack {
-                Toggle(isOn: $hapticsEnabled) {
-                    Text(viewModel.gridHapticsEnabledTitle)
-                }
+                Toggle(viewModel.gridHapticsEnabledTitle, isOn: $hapticsEnabled)
                 .tint(.green)
+            }
+
+            HStack {
+                Toggle(viewModel.preferDarkModeTitle, isOn: $darkModePreferred)
+                    .tint(.green)
             }
 
             HStack {

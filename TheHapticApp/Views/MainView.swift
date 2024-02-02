@@ -18,8 +18,8 @@ struct MainView: View {
     // then passing it to SettingsView below solves this issue.
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
 
-    @AppStorage(Constants.gridRows) var currentGridRows: Double = 16.0
-    @AppStorage(Constants.gridCols) var currentGridCols: Double = 16.0
+    @AppStorage(Constants.gridRows) var currentGridRows: Double = 30.0
+    @AppStorage(Constants.gridCols) var currentGridCols: Double = 30.0
     @AppStorage(Constants.dotSize) var currentDotSize: Double = 10.0
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
@@ -31,14 +31,14 @@ struct MainView: View {
                 HapticGrid<HapticEngine>()
                     .gridDimensions(Int(currentGridRows), Int(currentGridCols))
                     .dotSize(CGFloat(currentDotSize))
-                    .dotPadding()
+                    .dotPadding(3)
                     .dotColor(Color(myColor))
                     .feedback(feedbackIntensity, feedbackSharpness)
             }
             .toolbar {
                 toolbarView
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding()
         }
         .foregroundStyle(Color(Constants.defaultColor))
         .tint(Color(Constants.defaultColor))
