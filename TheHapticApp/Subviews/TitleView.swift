@@ -11,5 +11,6 @@ struct TitleView: View {
     var body: some View {
         Text("The Haptic App")
             .font(.system(.largeTitle, weight: .heavy))
+            .accessibilityHeading(.h1)
     }
 }

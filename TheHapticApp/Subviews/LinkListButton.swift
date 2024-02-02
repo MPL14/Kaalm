@@ -27,10 +27,15 @@ struct LinkListButton: View {
             }
             .buttonStyle(.bordered)
             .buttonBorderShape(.roundedRectangle(radius: 0))
+            .accessibilityHidden(true)
         }
         .buttonStyle(.plain)
         .listRowInsets(.init(top: 0, leading: 5, bottom: 0, trailing: 0))
         .tint(.clear)
+        .accessibilityLabel(labelText)
+        .accessibilityAction {
+            action()
+        }
     }
 }
 

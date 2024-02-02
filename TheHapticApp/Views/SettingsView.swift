@@ -151,26 +151,37 @@ struct SettingsView: View {
                 Text(viewModel.gridRowsTitle)
                 Slider(value: $currentGridRows, in: Constants.minGridSize...Constants.maxGridSize)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityValue("\(Int(currentGridRows)) grid rows")
+
 
             HStack {
                 Text(viewModel.gridColsTitle)
                 Slider(value: $currentGridCols, in: Constants.minGridSize...Constants.maxGridSize)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityValue("\(Int(currentGridCols)) grid columns")
 
             HStack {
                 Text(viewModel.gridDotSizeTitle)
                 Slider(value: $currentDotSize, in: Constants.minDotSize...Constants.maxDotSize)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityValue("Grid dot size is \(String(format: "%.2f", currentDotSize))")
 
             HStack {
                 Text(viewModel.gridFeedbackIntensityTitle)
                 Slider(value: $feedbackIntensity, in: 0...1)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityValue("Feedback intensity is \(String(format: "%.2f", feedbackIntensity))")
 
             HStack {
                 Text(viewModel.gridFeedbackSharpnessTitle)
                 Slider(value: $feedbackSharpness, in: 0...1)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityValue("Feedback sharpness is \(String(format: "%.2f", feedbackSharpness))")
 
             HStack {
                 Toggle(viewModel.gridHapticsEnabledTitle, isOn: $hapticsEnabled)

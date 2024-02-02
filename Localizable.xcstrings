@@ -4,6 +4,12 @@
     "%@" : {
 
     },
+    "%lld grid columns" : {
+
+    },
+    "%lld grid rows" : {
+
+    },
     "About" : {
 
     },
@@ -31,7 +37,13 @@
     "Feedback Intensity" : {
 
     },
+    "Feedback intensity is %@" : {
+
+    },
     "Feedback Sharpness" : {
+
+    },
+    "Feedback sharpness is %@" : {
 
     },
     "General" : {
@@ -43,7 +55,13 @@
     "Grid Columns" : {
 
     },
+    "Grid dot size is %@" : {
+
+    },
     "Grid Rows" : {
+
+    },
+    "Haptic Dot Grid" : {
 
     },
     "Haptics Enabled" : {
@@ -53,6 +71,12 @@
 
     },
     "OK" : {
+
+    },
+    "Personalization Settings" : {
+
+    },
+    "Plays haptics as you touch and drag." : {
 
     },
     "Prefer Dark Mode" : {
