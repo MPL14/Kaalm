@@ -70,8 +70,8 @@ struct HapticGrid<H: HapticPlaying>: View {
             .frame(width: viewGeo.size.width, height: viewGeo.size.height, alignment: .center)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Haptic Dot Grid")
-            .accessibilityAddTraits(.allowsDirectInteraction)
             .accessibilityHint("Plays haptics as you touch and drag.")
+            .accessibilityAddTraits(.allowsDirectInteraction)
         }
         // This PreferenceKey allows us to monitor the location and index
         // of each HapticDot and do stuff with that information.

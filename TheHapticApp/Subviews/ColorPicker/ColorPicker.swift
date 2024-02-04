@@ -36,17 +36,45 @@ struct CustomColorPicker<ColorShape: Shape>: View {
                         }
                     }
                     .onTapGesture {
-                        withAnimation {
-                            selectedColor = color
-                        }
+                        selectedColor = color
                     }
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Grid Color Picker")
+        .accessibilityHint("Change the color of the haptic grid.")
+        .accessibilityValue("The grid color is \(selectedColor).")
+        .accessibilityAdjustableAction { direction in
+            guard let index = colors.firstIndex(where: { $0 == selectedColor }) else { return }
+
+            switch direction {
+            case .increment:
+                var newIndex = 0
+                if index < colors.count - 1 {
+                    newIndex = index + 1
+                } else {
+                    newIndex = 0
+                }
+
+                selectedColor = colors[newIndex]
+            case .decrement:
+                var newIndex = 0
+                if index > 0 {
+                    newIndex = index - 1
+                } else {
+                    newIndex = colors.count - 1
+                }
+
+                selectedColor = colors[newIndex]
+            @unknown default:
+                break
             }
         }
     }
 
     public init(_ title: LocalizedStringResource = "Color Picker",
-         selectedColor: Binding<String>,
-         colorShape: @escaping () -> ColorShape = { Circle() }
+                selectedColor: Binding<String>,
+                colorShape: @escaping () -> ColorShape = { Circle() }
     ) {
         self.title = String(localized: title)
         self._selectedColor = selectedColor

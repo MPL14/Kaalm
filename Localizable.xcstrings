@@ -16,6 +16,9 @@
     "Calm through haptics." : {
 
     },
+    "Change the color of the haptic grid." : {
+
+    },
     "Color Picker" : {
 
     },
@@ -50,6 +53,9 @@
 
     },
     "Grid Color" : {
+
+    },
+    "Grid Color Picker" : {
 
     },
     "Grid Columns" : {
@@ -110,6 +116,9 @@
 
     },
     "Swipe to Open" : {
+
+    },
+    "The grid color is %@." : {
 
     },
     "The Haptic App" : {
