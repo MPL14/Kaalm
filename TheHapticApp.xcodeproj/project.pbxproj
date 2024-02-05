@@ -222,8 +222,8 @@
 			children = (
 				44F855AE2B68137500081920 /* ColorPicker */,
 				4465D2B62B642A3B00BD0B01 /* HapticGrid */,
-				44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */,
 				443ED92C2B6C167700FF9FE6 /* TitleView.swift */,
+				44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */,
 				443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */,
 			);
 			path = Subviews;

@@ -61,6 +61,7 @@ struct OnboardingView: View {
         .gridDimensions(6, 45)
         .sliderWidth(7)
         .dotPadding(0.4)
+        .shimmer(.init(tint: .clear, highlight: .gray.opacity(0.9), blur: 5))
     }
 
     private var swipeToOpenText: some View {

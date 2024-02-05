@@ -28,8 +28,6 @@ fileprivate struct ShimmerEffect: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            // Hide the original content.
-            .hidden()
             .overlay {
                 Rectangle()
                     .fill(config.tint)
@@ -68,6 +66,25 @@ fileprivate struct ShimmerEffect: ViewModifier {
                             moveTo = 1.5
                         }
                     }
+                    .allowsHitTesting(false)
             }
     }
+}
+
+#Preview {
+    ZStack {
+        Color("Default")
+            .ignoresSafeArea()
+        VStack(spacing: 20) {
+            SwipeToUnlock<HapticEngine> {
+                print("hi")
+            }
+            .shimmer(.init(tint: .white.opacity(0.2), highlight: .gray, blur: 5))
+
+            Text("Swipe to Open")
+                .font(.headline)
+                .shimmer(.init(tint: .white.opacity(0.5), highlight: .white, blur: 5))
+        }
+    }
+    .environmentObject(HapticEngine())
 }
