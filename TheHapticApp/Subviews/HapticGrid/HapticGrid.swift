@@ -61,12 +61,12 @@ struct HapticGrid<H: HapticPlaying>: View {
                     }
                 }
             }
-//            .scaleEffect(gridScale, anchor: .center)
-//            .onAppear {
-//                withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
-//                    gridScale = CGSize(width: 1.0, height: 1.0)
-//                }
-//            }
+            .scaleEffect(gridScale, anchor: .center)
+            .onAppear {
+                withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
+                    gridScale = CGSize(width: 1.0, height: 1.0)
+                }
+            }
             .frame(width: viewGeo.size.width, height: viewGeo.size.height, alignment: .center)
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Haptic Dot Grid")
