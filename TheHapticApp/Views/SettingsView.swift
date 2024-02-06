@@ -83,11 +83,15 @@ struct SettingsView: View {
         }
         .sheet(isPresented: self.$viewModel.manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)
-                .onPurchaseCompleted { customerInfo in
-                    self.viewModel.verifyPremiumUnlocked(for: customerInfo)
+                .onPurchaseCompleted { _ in
+                    Task {
+                        await self.viewModel.verifyPremiumUnlocked()
+                    }
                 }
-                .onRestoreCompleted { customerInfo in
-                    self.viewModel.verifyPremiumUnlocked(for: customerInfo)
+                .onRestoreCompleted { _ in
+                    Task {
+                        await self.viewModel.verifyPremiumUnlocked()
+                    }
                 }
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {

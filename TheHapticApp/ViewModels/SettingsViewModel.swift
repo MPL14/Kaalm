@@ -102,49 +102,4 @@ final class SettingsViewModel: ObservableObject {
     @MainActor public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement) async {
         self.isPremiumUnlocked = await purchaseEngine.verifyPremiumUnlocked(entitlement)
     }
-
-    public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement, for customerInfo: CustomerInfo) {
-        self.isPremiumUnlocked = purchaseEngine.verifyPremiumUnlocked(entitlement, for: customerInfo)
-    }
-}
-
-protocol PurchaseEngine {
-    func restorePurchasesAndVerifyEntitlement(_ entitlement: String) async -> Result<Bool, Error>
-    func verifyPremiumUnlocked(_ entitlement: String) async -> Bool
-    func verifyPremiumUnlocked(_ entitlement: String, for customerInfo: CustomerInfo) -> Bool
-}
-
-extension Purchases: PurchaseEngine {
-    /// Retrieves customer information and verifies the specified entitlement.
-    /// - Parameter _ entitlement: The entitlement to verify.
-    func verifyPremiumUnlocked(_ entitlement: String) async -> Bool {
-        return (try? await customerInfo())?.entitlements[entitlement]?.isActive == true
-    }
-    
-    /// Verifies the specified entitlement for the provided customerInfo.
-    /// - Parameter _ entitlement: The entitlement to verify.
-    /// - Parameter for customerInfo: The customerInfo for which to verify the entitlement.
-    func verifyPremiumUnlocked(_ entitlement: String, for customerInfo: RevenueCat.CustomerInfo) -> Bool {
-        return customerInfo.entitlements[entitlement]?.isActive == true
-    }
-    
-    /// Initiates a restore purchases command and returns a Result.
-    /// If the restore is successful, we return Result<Bool>. The Bool
-    /// depends on if the specified entitlement is active. The restore
-    /// purchase command can also fail, in which case we return Result<Error>.
-    /// - Parameter _ entitlement: The entitlement to verify after restoring purchases.
-    func restorePurchasesAndVerifyEntitlement(_ entitlement: String) async -> Result<Bool, Error> {
-        do {
-            let customerInfo = try await restorePurchases()
-
-            // The restore process can be successful but not
-            // restore e.g. if a user never purchased premium access.
-            let successfulRestore = customerInfo.entitlements[entitlement]?.isActive == true
-            return .success(successfulRestore)
-        } catch {
-            // If the restore process throws an error,
-            // return failure.
-            return .failure(error)
-        }
-    }
 }
