@@ -84,10 +84,10 @@ struct SettingsView: View {
         .sheet(isPresented: self.$viewModel.manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)
                 .onPurchaseCompleted { customerInfo in
-                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
+                    self.viewModel.verifyPremiumUnlocked(for: customerInfo)
                 }
                 .onRestoreCompleted { customerInfo in
-                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
+                    self.viewModel.verifyPremiumUnlocked(for: customerInfo)
                 }
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
@@ -140,7 +140,7 @@ struct SettingsView: View {
     private var restorePurchasesButton: some View {
         LinkListButton(labelText: viewModel.restorePurchasesButtonText) {
             Task(priority: .userInitiated) {
-                await viewModel.restorePurchasesButtonTapped()
+                await viewModel.restorePurchasesButtonTappedForEntitlement()
             }
         }
     }

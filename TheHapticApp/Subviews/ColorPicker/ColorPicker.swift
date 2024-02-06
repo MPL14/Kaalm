@@ -9,13 +9,19 @@ import SwiftUI
 
 /// Custom Color Picker
 struct CustomColorPicker<ColorShape: Shape>: View {
+    // MARK: - Environment
+    @Environment(\.isEnabled) private var isEnabled
+
+    // MARK: - State
+    @State private var colors: [String] = [String]()
+    @Binding private var selectedColor: String
+
+    // MARK: - Properties
     private var title: String
     private var colorShapeSize: CGSize = CGSize(width: 20, height: 20)
     private var colorShape: ColorShape
     private var highlightColor: Color = Color.primary
-
-    @State private var colors: [String] = [String]()
-    @Binding private var selectedColor: String
+    private let impactLight = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
         HStack {
@@ -25,18 +31,19 @@ struct CustomColorPicker<ColorShape: Shape>: View {
 
             ForEach(colors, id: \.hashValue) { color in
                 colorShape
-                    .fill(Color(color))
+                    .fill(isEnabled ? Color(color) : Color(color).opacity(0.5))
                     .frame(width: colorShapeSize.width, height: colorShapeSize.height)
                     .overlay {
                         if selectedColor == color {
                             colorShape
                                 .scale(1.3)
                                 .stroke(style: .init(lineWidth: 2))
-                                .fill(highlightColor)
+                                .fill(isEnabled ? highlightColor : highlightColor.opacity(0.5))
                         }
                     }
                     .onTapGesture {
                         selectedColor = color
+                        impactLight.impactOccurred()
                     }
             }
         }

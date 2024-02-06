@@ -24,6 +24,9 @@ final class SettingsViewModel: ObservableObject {
     @Published var showingAlert = false
 
     // MARK: - Properties
+    // Abstracted purchase engine.
+    private var purchaseEngine: PurchaseEngine
+
     public let settingsViewTitle: String = String(localized: "Settings")
 
     // List Section Titles
@@ -64,6 +67,10 @@ final class SettingsViewModel: ObservableObject {
         return String(localized: "The Haptic App, v\(Bundle.main.releaseVersionNumber ?? "nil")")
     }
 
+    init(purchaseEngine: PurchaseEngine = Purchases.shared) {
+        self.purchaseEngine = purchaseEngine
+    }
+
     // MARK: - Public Functions
     public func supportEmailButtonTapped() {
         if MFMailComposeViewController.canSendMail() {
@@ -76,28 +83,68 @@ final class SettingsViewModel: ObservableObject {
     }
 
     // MARK: - RevenueCat
-    @MainActor public func restorePurchasesButtonTapped() async {
-        do {
-            let customerInfo = try await Purchases.shared.restorePurchases()
+    @MainActor public func restorePurchasesButtonTappedForEntitlement(_ entitlement: String = Constants.premiumEntitlement) async {
+        let result = await purchaseEngine.restorePurchasesAndVerifyEntitlement(entitlement)
 
-            let successfulRestore = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true
-
-            self.alertMessageTitle = successfulRestore ? self.restorePurchaseSuccessMessageTitle : self.restorePurchaseFailureMessageTitle
-            self.alertMessage = successfulRestore ? self.restorePurchaseSuccessMessage : self.restorePurchaseFailureMessage
-            self.isPremiumUnlocked = successfulRestore
+        switch result {
+        case .success(let success):
+            self.alertMessageTitle = success ? self.restorePurchaseSuccessMessageTitle : self.restorePurchaseFailureMessageTitle
+            self.alertMessage = success ? self.restorePurchaseSuccessMessage : self.restorePurchaseFailureMessage
+            self.isPremiumUnlocked = success
             self.showingAlert = true
-        } catch {
+        case .failure(let failure):
             self.alertMessageTitle = self.restorePurchaseErrorMessageTitle
-            self.alertMessage = error.localizedDescription
+            self.alertMessage = failure.localizedDescription
             self.showingAlert = true
         }
     }
 
-    @MainActor public func verifyPremiumUnlocked() async {
-        self.isPremiumUnlocked = (try? await Purchases.shared.customerInfo())?.entitlements[Constants.premiumEntitlement]?.isActive == true
+    @MainActor public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement) async {
+        self.isPremiumUnlocked = await purchaseEngine.verifyPremiumUnlocked(entitlement)
     }
 
-    public func verifyPremiumEntitlement(_ entitlement: String = Constants.premiumEntitlement, for customerInfo: CustomerInfo) {
-        self.isPremiumUnlocked = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true
+    public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement, for customerInfo: CustomerInfo) {
+        self.isPremiumUnlocked = purchaseEngine.verifyPremiumUnlocked(entitlement, for: customerInfo)
+    }
+}
+
+protocol PurchaseEngine {
+    func restorePurchasesAndVerifyEntitlement(_ entitlement: String) async -> Result<Bool, Error>
+    func verifyPremiumUnlocked(_ entitlement: String) async -> Bool
+    func verifyPremiumUnlocked(_ entitlement: String, for customerInfo: CustomerInfo) -> Bool
+}
+
+extension Purchases: PurchaseEngine {
+    /// Retrieves customer information and verifies the specified entitlement.
+    /// - Parameter _ entitlement: The entitlement to verify.
+    func verifyPremiumUnlocked(_ entitlement: String) async -> Bool {
+        return (try? await customerInfo())?.entitlements[entitlement]?.isActive == true
+    }
+    
+    /// Verifies the specified entitlement for the provided customerInfo.
+    /// - Parameter _ entitlement: The entitlement to verify.
+    /// - Parameter for customerInfo: The customerInfo for which to verify the entitlement.
+    func verifyPremiumUnlocked(_ entitlement: String, for customerInfo: RevenueCat.CustomerInfo) -> Bool {
+        return customerInfo.entitlements[entitlement]?.isActive == true
+    }
+    
+    /// Initiates a restore purchases command and returns a Result.
+    /// If the restore is successful, we return Result<Bool>. The Bool
+    /// depends on if the specified entitlement is active. The restore
+    /// purchase command can also fail, in which case we return Result<Error>.
+    /// - Parameter _ entitlement: The entitlement to verify after restoring purchases.
+    func restorePurchasesAndVerifyEntitlement(_ entitlement: String) async -> Result<Bool, Error> {
+        do {
+            let customerInfo = try await restorePurchases()
+
+            // The restore process can be successful but not
+            // restore e.g. if a user never purchased premium access.
+            let successfulRestore = customerInfo.entitlements[entitlement]?.isActive == true
+            return .success(successfulRestore)
+        } catch {
+            // If the restore process throws an error,
+            // return failure.
+            return .failure(error)
+        }
     }
 }

@@ -29,7 +29,6 @@
 		4450CA0A2B685069008093B6 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA092B685069008093B6 /* RevenueCat */; };
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
-		4450CA122B6850B9008093B6 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA112B6850B9008093B6 /* PurchaseManager.swift */; };
 		4450CA182B685652008093B6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA172B685652008093B6 /* Secrets.swift */; };
 		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
 		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
@@ -66,7 +65,6 @@
 		443ED9322B6C3E0A00FF9FE6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4450CA042B684DDA008093B6 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		4450CA112B6850B9008093B6 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4450CA172B685652008093B6 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				440157F12B6AC70F00AD2EC3 /* AppConstants */,
 				441B21B62B62D75E00CF4DFF /* Views */,
 				440B744B2B6989850060974A /* ViewModels */,
-				4450CA102B6850A6008093B6 /* Managers */,
 				4465D2AF2B64092200BD0B01 /* Subviews */,
 				441B21A42B6233E900CF4DFF /* Effects */,
 				441B21B32B62BB7100CF4DFF /* Extensions */,
@@ -207,14 +204,6 @@
 				4450CA0E2B68507E008093B6 /* StoreKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4450CA102B6850A6008093B6 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				4450CA112B6850B9008093B6 /* PurchaseManager.swift */,
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		4465D2AF2B64092200BD0B01 /* Subviews */ = {
@@ -351,7 +340,6 @@
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				443ED9332B6C3E0A00FF9FE6 /* AboutView.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
-				4450CA122B6850B9008093B6 /* PurchaseManager.swift in Sources */,
 				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
 				440B74472B6984650060974A /* MailView.swift in Sources */,
 			);
