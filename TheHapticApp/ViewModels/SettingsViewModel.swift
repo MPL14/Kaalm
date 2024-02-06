@@ -77,23 +77,24 @@ final class SettingsViewModel: ObservableObject {
 
     // MARK: - RevenueCat
     @MainActor public func restorePurchasesButtonTapped() async {
-        let result = await PurchaseManager.shared.restorePurchases()
+        do {
+            let customerInfo = try await Purchases.shared.restorePurchases()
 
-        switch result {
-        case .success(let success):
-            self.alertMessageTitle = success ? self.restorePurchaseSuccessMessageTitle : self.restorePurchaseFailureMessageTitle
-            self.alertMessage = success ? self.restorePurchaseSuccessMessage : self.restorePurchaseFailureMessage
-            self.isPremiumUnlocked = success
+            let successfulRestore = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true
+
+            self.alertMessageTitle = successfulRestore ? self.restorePurchaseSuccessMessageTitle : self.restorePurchaseFailureMessageTitle
+            self.alertMessage = successfulRestore ? self.restorePurchaseSuccessMessage : self.restorePurchaseFailureMessage
+            self.isPremiumUnlocked = successfulRestore
             self.showingAlert = true
-        case .failure(let failure):
+        } catch {
             self.alertMessageTitle = self.restorePurchaseErrorMessageTitle
-            self.alertMessage = failure.localizedDescription
+            self.alertMessage = error.localizedDescription
             self.showingAlert = true
         }
     }
 
     @MainActor public func verifyPremiumUnlocked() async {
-        self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
+        self.isPremiumUnlocked = (try? await Purchases.shared.customerInfo())?.entitlements[Constants.premiumEntitlement]?.isActive == true
     }
 
     public func verifyPremiumEntitlement(_ entitlement: String = Constants.premiumEntitlement, for customerInfo: CustomerInfo) {
