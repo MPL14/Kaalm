@@ -67,6 +67,8 @@ fileprivate struct ShimmerEffect: ViewModifier {
                         }
                     }
                     .allowsHitTesting(false)
+                    // Allows the underlying view to be interacted with,
+                    // since the shimmer effect is placed on top of it.
             }
     }
 }

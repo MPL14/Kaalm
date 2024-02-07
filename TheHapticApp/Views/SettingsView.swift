@@ -37,14 +37,17 @@ struct SettingsView: View {
         List {
             Section(viewModel.generalSectionText) {
                 aboutButton
+                    .accessibilityIdentifier("aboutButton")
 
                 requestReviewButton
+                    .accessibilityIdentifier("requestReviewButton")
             }
 
             Section(viewModel.customizeSectionText) {
                 appearanceControls
 
                 manuallyPurchasePremiumButton
+                    .accessibilityIdentifier("purchaseButton")
             }
             .onChange(of: feedbackIntensity) { value in
                 hapticEngine.asyncPlayHaptic(
@@ -83,12 +86,17 @@ struct SettingsView: View {
         }
         .sheet(isPresented: self.$viewModel.manuallyShowPaywall) {
             PaywallView(displayCloseButton: true)
-                .onPurchaseCompleted { customerInfo in
-                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
+                .onPurchaseCompleted { _ in
+                    Task {
+                        await self.viewModel.verifyPremiumUnlocked()
+                    }
                 }
-                .onRestoreCompleted { customerInfo in
-                    self.viewModel.verifyPremiumEntitlement(for: customerInfo)
+                .onRestoreCompleted { _ in
+                    Task {
+                        await self.viewModel.verifyPremiumUnlocked()
+                    }
                 }
+                .accessibilityIdentifier("paywall")
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
             MailView(result: $viewModel.mailResult)
@@ -140,7 +148,7 @@ struct SettingsView: View {
     private var restorePurchasesButton: some View {
         LinkListButton(labelText: viewModel.restorePurchasesButtonText) {
             Task(priority: .userInitiated) {
-                await viewModel.restorePurchasesButtonTapped()
+                await viewModel.restorePurchasesButtonTappedForEntitlement()
             }
         }
     }

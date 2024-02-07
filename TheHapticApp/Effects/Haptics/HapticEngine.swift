@@ -13,9 +13,6 @@ import SwiftUI
 final class HapticEngine: HapticPlaying, ObservableObject {
     @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
 
-//    // MARK: - State
-//    @Published var deviceSupportsHaptics: Bool = true
-
     // MARK: - Properties
     private var hapticEngine: CHHapticEngine?
 

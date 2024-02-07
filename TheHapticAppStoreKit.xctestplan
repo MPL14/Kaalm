@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "30A92980-A2ED-4B1B-BC4A-BBC0CEDA360B",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:TheHapticApp.xcodeproj",
+      "identifier" : "441B21922B62332300CF4DFF",
+      "name" : "TheHapticApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:TheHapticApp.xcodeproj",
+        "identifier" : "442F97BF2B72BA590061C724",
+        "name" : "TheHapticAppUnitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:TheHapticApp.xcodeproj",
+        "identifier" : "442F97CD2B72CCCA0061C724",
+        "name" : "TheHapticAppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

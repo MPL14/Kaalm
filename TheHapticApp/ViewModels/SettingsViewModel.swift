@@ -24,6 +24,9 @@ final class SettingsViewModel: ObservableObject {
     @Published var showingAlert = false
 
     // MARK: - Properties
+    // Abstracted purchase engine.
+    private var purchaseEngine: PurchaseEngine
+
     public let settingsViewTitle: String = String(localized: "Settings")
 
     // List Section Titles
@@ -64,6 +67,10 @@ final class SettingsViewModel: ObservableObject {
         return String(localized: "The Haptic App, v\(Bundle.main.releaseVersionNumber ?? "nil")")
     }
 
+    init(purchaseEngine: PurchaseEngine = Purchases.shared) {
+        self.purchaseEngine = purchaseEngine
+    }
+
     // MARK: - Public Functions
     public func supportEmailButtonTapped() {
         if MFMailComposeViewController.canSendMail() {
@@ -76,8 +83,8 @@ final class SettingsViewModel: ObservableObject {
     }
 
     // MARK: - RevenueCat
-    @MainActor public func restorePurchasesButtonTapped() async {
-        let result = await PurchaseManager.shared.restorePurchases()
+    @MainActor public func restorePurchasesButtonTappedForEntitlement(_ entitlement: String = Constants.premiumEntitlement) async {
+        let result = await purchaseEngine.restorePurchasesAndVerifyEntitlement(entitlement)
 
         switch result {
         case .success(let success):
@@ -92,11 +99,7 @@ final class SettingsViewModel: ObservableObject {
         }
     }
 
-    @MainActor public func verifyPremiumUnlocked() async {
-        self.isPremiumUnlocked = await PurchaseManager.shared.isPremiumUnlocked()
-    }
-
-    public func verifyPremiumEntitlement(_ entitlement: String = Constants.premiumEntitlement, for customerInfo: CustomerInfo) {
-        self.isPremiumUnlocked = customerInfo.entitlements[Constants.premiumEntitlement]?.isActive == true
+    @MainActor public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement) async {
+        self.isPremiumUnlocked = await purchaseEngine.verifyPremiumUnlocked(entitlement)
     }
 }

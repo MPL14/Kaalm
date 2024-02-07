@@ -97,6 +97,11 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                     }
                 }
         )
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Swipe to Unlock")
+        .accessibilityHint("Swipe to the right on this view to unlock.")
+        .accessibilityAddTraits(.allowsDirectInteraction)
+        .accessibilityIdentifier("swipeToUnlock")
     }
 
     // MARK: - Modifiers
