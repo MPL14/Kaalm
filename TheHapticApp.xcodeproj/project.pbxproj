@@ -23,8 +23,7 @@
 		441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441B21B72B62D87900CF4DFF /* HapticPlaying.swift */; };
 		442F97BB2B72B8EA0061C724 /* Purchases-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F97BA2B72B8EA0061C724 /* Purchases-Extension.swift */; };
 		442F97C32B72BA5A0061C724 /* SettingsViewModelUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F97C22B72BA5A0061C724 /* SettingsViewModelUnitTests.swift */; };
-		442F97D12B72CCCA0061C724 /* TheHapticAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F97D02B72CCCA0061C724 /* TheHapticAppUITests.swift */; };
-		442F97D32B72CCCA0061C724 /* TheHapticAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F97D22B72CCCA0061C724 /* TheHapticAppUITestsLaunchTests.swift */; };
+		442F97D12B72CCCA0061C724 /* TheHapticAppOnboardingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F97D02B72CCCA0061C724 /* TheHapticAppOnboardingUITests.swift */; };
 		443ED92D2B6C167700FF9FE6 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED92C2B6C167700FF9FE6 /* TitleView.swift */; };
 		443ED92F2B6C176A00FF9FE6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED92E2B6C176A00FF9FE6 /* SettingsView.swift */; };
 		443ED9312B6C32A300FF9FE6 /* LinkListButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */; };
@@ -85,8 +84,7 @@
 		442F97C22B72BA5A0061C724 /* SettingsViewModelUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelUnitTests.swift; sourceTree = "<group>"; };
 		442F97C92B72CB720061C724 /* TheHapticAppStoreKit.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TheHapticAppStoreKit.xctestplan; sourceTree = "<group>"; };
 		442F97CE2B72CCCA0061C724 /* TheHapticAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheHapticAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		442F97D02B72CCCA0061C724 /* TheHapticAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticAppUITests.swift; sourceTree = "<group>"; };
-		442F97D22B72CCCA0061C724 /* TheHapticAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		442F97D02B72CCCA0061C724 /* TheHapticAppOnboardingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticAppOnboardingUITests.swift; sourceTree = "<group>"; };
 		443ED92C2B6C167700FF9FE6 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		443ED92E2B6C176A00FF9FE6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		443ED9302B6C32A300FF9FE6 /* LinkListButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkListButton.swift; sourceTree = "<group>"; };
@@ -257,8 +255,7 @@
 		442F97CF2B72CCCA0061C724 /* TheHapticAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				442F97D02B72CCCA0061C724 /* TheHapticAppUITests.swift */,
-				442F97D22B72CCCA0061C724 /* TheHapticAppUITestsLaunchTests.swift */,
+				442F97D02B72CCCA0061C724 /* TheHapticAppOnboardingUITests.swift */,
 			);
 			path = TheHapticAppUITests;
 			sourceTree = "<group>";
@@ -483,8 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				442F97D12B72CCCA0061C724 /* TheHapticAppUITests.swift in Sources */,
-				442F97D32B72CCCA0061C724 /* TheHapticAppUITestsLaunchTests.swift in Sources */,
+				442F97D12B72CCCA0061C724 /* TheHapticAppOnboardingUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
