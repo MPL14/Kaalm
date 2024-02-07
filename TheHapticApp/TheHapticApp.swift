@@ -20,10 +20,10 @@ struct TheHapticApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if !onboardingComplete {
-                    OnboardingView()
-                } else {
+                if onboardingComplete {
                     MainView()
+                } else {
+                    OnboardingView()
                 }
             }
             .animation(.easeIn, value: self.onboardingComplete)

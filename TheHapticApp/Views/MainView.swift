@@ -61,6 +61,7 @@ struct MainView: View {
                         .font(.system(size: 24, weight: .semibold))
                 }
                 .accessibilityLabel("Personalization Settings")
+                .accessibilityIdentifier("personalizationSettings")
             }
         }
     }

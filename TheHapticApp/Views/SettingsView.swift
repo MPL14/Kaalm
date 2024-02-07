@@ -37,14 +37,17 @@ struct SettingsView: View {
         List {
             Section(viewModel.generalSectionText) {
                 aboutButton
+                    .accessibilityIdentifier("aboutButton")
 
                 requestReviewButton
+                    .accessibilityIdentifier("requestReviewButton")
             }
 
             Section(viewModel.customizeSectionText) {
                 appearanceControls
 
                 manuallyPurchasePremiumButton
+                    .accessibilityIdentifier("purchaseButton")
             }
             .onChange(of: feedbackIntensity) { value in
                 hapticEngine.asyncPlayHaptic(
@@ -93,6 +96,7 @@ struct SettingsView: View {
                         await self.viewModel.verifyPremiumUnlocked()
                     }
                 }
+                .accessibilityIdentifier("paywall")
         }
         .sheet(isPresented: $viewModel.isShowingMailView) {
             MailView(result: $viewModel.mailResult)
