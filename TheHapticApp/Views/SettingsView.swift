@@ -16,7 +16,7 @@ struct SettingsView: View {
     @EnvironmentObject private var hapticEngine: HapticEngine
     @Environment(\.requestReview) var requestReview
     @Environment(\.openURL) var openURL
-
+    
     @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
     @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
     @AppStorage(Constants.dotSize) var currentDotSize: Double = Constants.defaultDotSize
@@ -25,27 +25,27 @@ struct SettingsView: View {
     @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
     @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
     @AppStorage(Constants.darkModePreferred) var darkModePreferred: Bool = false
-
+    
     // MARK: - State
     @ObservedObject private var viewModel: SettingsViewModel
-
+    
     init(_ viewModel: SettingsViewModel) {
         self.viewModel = viewModel
     }
-
+    
     var body: some View {
         List {
             Section(viewModel.generalSectionText) {
                 aboutButton
                     .accessibilityIdentifier("aboutButton")
-
+                
                 requestReviewButton
                     .accessibilityIdentifier("requestReviewButton")
             }
-
+            
             Section(viewModel.customizeSectionText) {
                 appearanceControls
-
+                
                 manuallyPurchasePremiumButton
                     .accessibilityIdentifier("purchaseButton")
             }
@@ -61,14 +61,14 @@ struct SettingsView: View {
                     sharpness: feedbackSharpness
                 )
             }
-
+            
             Section {
                 supportEmailButton
-
+                
                 supportWebsiteButton
-
+                
                 privacyPolicyButton
-
+                
                 restorePurchasesButton
             } header: {
                 Text(viewModel.supportSectionText)
@@ -107,7 +107,7 @@ struct SettingsView: View {
             Text(viewModel.alertMessage)
         }
     }
-
+    
     // MARK: - Subviews
     private var aboutButton: some View {
         NavigationLink {
@@ -116,7 +116,7 @@ struct SettingsView: View {
             Text(viewModel.aboutButtonText)
         }
     }
-
+    
     private var requestReviewButton: some View {
         LinkListButton(labelText: viewModel.rateButtonText) {
             Task {
@@ -124,27 +124,27 @@ struct SettingsView: View {
             }
         }
     }
-
+    
     private var supportEmailButton: some View {
         LinkListButton(labelText: viewModel.supportEmailButtonText) {
             viewModel.supportEmailButtonTapped()
         }
     }
-
+    
     private var supportWebsiteButton: some View {
         LinkListButton(labelText: viewModel.supportWebsiteButtonText) {
             guard let url = Constants.appSupportPageURL else { return }
             openURL(url)
         }
     }
-
+    
     private var privacyPolicyButton: some View {
         LinkListButton(labelText: viewModel.privacyPolicyWebsiteButtonText) {
             guard let url = Constants.appPrivacyPolicyURL else { return }
             openURL(url)
         }
     }
-
+    
     private var restorePurchasesButton: some View {
         LinkListButton(labelText: viewModel.restorePurchasesButtonText) {
             Task(priority: .userInitiated) {
@@ -152,55 +152,55 @@ struct SettingsView: View {
             }
         }
     }
-
+    
     private var appearanceControls: some View {
         Group {
-            HStack {
-                Text(viewModel.gridRowsTitle)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(viewModel.gridRowsTitle + ", \(Int(currentGridRows))")
                 Slider(value: $currentGridRows, in: Constants.minGridSize...Constants.maxGridSize)
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("\(Int(currentGridRows)) grid rows")
-
-
-            HStack {
-                Text(viewModel.gridColsTitle)
+            
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(viewModel.gridColsTitle + ", \(Int(currentGridCols))")
                 Slider(value: $currentGridCols, in: Constants.minGridSize...Constants.maxGridSize)
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("\(Int(currentGridCols)) grid columns")
-
-            HStack {
-                Text(viewModel.gridDotSizeTitle)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(viewModel.gridDotSizeTitle + ", \(String(format: "%.1f", currentDotSize))")
                 Slider(value: $currentDotSize, in: Constants.minDotSize...Constants.maxDotSize)
             }
             .accessibilityElement(children: .combine)
-            .accessibilityValue("Grid dot size is \(String(format: "%.2f", currentDotSize))")
-
-            HStack {
-                Text(viewModel.gridFeedbackIntensityTitle)
+            .accessibilityValue("Grid dot size is \(String(format: "%.1f", currentDotSize))")
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(viewModel.gridFeedbackIntensityTitle + ", \(String(format: "%.1f", feedbackIntensity))")
                 Slider(value: $feedbackIntensity, in: 0...1)
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("Feedback intensity is \(String(format: "%.2f", feedbackIntensity))")
-
-            HStack {
-                Text(viewModel.gridFeedbackSharpnessTitle)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(viewModel.gridFeedbackSharpnessTitle + ", \(String(format: "%.1f", feedbackSharpness))")
                 Slider(value: $feedbackSharpness, in: 0...1)
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("Feedback sharpness is \(String(format: "%.2f", feedbackSharpness))")
-
+            
             HStack {
                 Toggle(viewModel.gridHapticsEnabledTitle, isOn: $hapticsEnabled)
                     .tint(.green)
             }
-
+            
             HStack {
                 Toggle(viewModel.preferDarkModeTitle, isOn: $darkModePreferred)
                     .tint(.green)
             }
-
+            
             HStack {
                 CustomColorPicker(selectedColor: $myColor)
                     .colors(
@@ -221,7 +221,7 @@ struct SettingsView: View {
             !self.viewModel.isPremiumUnlocked
         )
     }
-
+    
     // This is a fix for putting a Button inside of a List.
     // The Button tap gesture messes with the scrolling gesture
     // of the list and causes conflicts. This is a method for

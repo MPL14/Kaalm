@@ -36,6 +36,8 @@ struct MainView: View {
                     .feedback(feedbackIntensity, feedbackSharpness)
             }
             .padding()
+            .navigationTitle("The Haptic App")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 toolbarView
             }
@@ -48,11 +50,6 @@ struct MainView: View {
     // MARK: - Subviews
     private var toolbarView: some ToolbarContent {
         Group {
-            ToolbarItem(placement: .topBarLeading) {
-                TitleView()
-                    .accessibilityAddTraits(.isHeader)
-            }
-
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink {
                     SettingsView(settingsViewModel)
