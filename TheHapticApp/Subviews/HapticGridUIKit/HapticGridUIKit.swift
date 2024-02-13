@@ -85,6 +85,13 @@ struct HapticGridUIKit: UIViewRepresentable {
     }
 }
 
+class CircleView: UIView {
+    // Override pointInside to increase the hittable area of the dots.
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return bounds.insetBy(dx: -10, dy: -10).contains(point)
+    }
+}
+
 extension HapticGridUIKit.Coordinator: UIGestureRecognizerDelegate {
     func setupCircles(in view: UIView) {
         let circleDiameter: CGFloat = dotSize
@@ -113,7 +120,7 @@ extension HapticGridUIKit.Coordinator: UIGestureRecognizerDelegate {
             for j in stride(from: 0, to: columns, by: 1) {
                 let jthColumnPosition = (widthPerColumn * CGFloat(j)) + ((circleDiameter + circlePadding) / 2.0) + (leftOverX / 2.0)
                 
-                let circleView = UIView()
+                let circleView = CircleView()
                 circleView.translatesAutoresizingMaskIntoConstraints = false
                 circleView.layer.bounds = CGRect(x: 0, y: 0, width: circleDiameter, height: circleDiameter)
                 circleView.layer.position = CGPoint(x: jthColumnPosition, y: ithRowPosition)
