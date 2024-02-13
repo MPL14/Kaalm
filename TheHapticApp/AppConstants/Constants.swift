@@ -28,14 +28,15 @@ struct Constants {
     static let defaultGridSize: Double = 16.0
     static let defaultDotSize: Double = 10.0
     
-    static let minGridSize: Double = 3.0
-    static let maxGridSize: Double = 30.0
-    static let minDotSize: Double = 3.0
-    static let maxDotSize: Double = 20.0
+    static let minGridSize: Double = 5.0
+    static let maxGridSize: Double = 20.0
+    static let minDotSize: Double = 10.0
+    static let maxDotSize: Double = 50.0
 
     // MARK: - Stock Color Assets
     static let backgroundColor: String = "Background"
-    static let defaultColor: String = "Default"
+    static let accentColor: String = "Default"
+    static let charcoalColor: String = "Charcoal"
     static let clayColor: String = "Clay"
     static let oceanColor: String = "Ocean"
     static let roseColor: String = "Rose"

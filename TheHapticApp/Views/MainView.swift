@@ -21,19 +21,27 @@ struct MainView: View {
     @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
     @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
     @AppStorage(Constants.dotSize) var currentDotSize: Double = Constants.defaultDotSize
-    @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
+    @AppStorage(Constants.myColor) var myColor: String = Constants.accentColor
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
     @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
-                HapticGrid<HapticEngine>()
-                    .gridDimensions(Int(currentGridRows), Int(currentGridCols))
-                    .dotSize(CGFloat(currentDotSize))
-                    .dotPadding(3)
-                    .dotColor(Color(myColor))
-                    .feedback(feedbackIntensity, feedbackSharpness)
+//                HapticGrid<HapticEngine>()
+//                    .gridDimensions(Int(currentGridRows), Int(currentGridCols))
+//                    .dotSize(CGFloat(currentDotSize))
+//                    .dotPadding(3)
+//                    .dotColor(Color(myColor))
+//                    .feedback(feedbackIntensity, feedbackSharpness)
+                GeometryReader { geo in
+                    HapticGridUIKit(frame: geo.size)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("Haptic Dot Grid")
+                        .accessibilityHint("Plays haptics as you touch and drag.")
+                        .accessibilityAddTraits(.allowsDirectInteraction)
+                        .accessibilityIdentifier("hapticGrid")
+                }
             }
             .padding()
             .navigationTitle("The Haptic App")
@@ -42,8 +50,8 @@ struct MainView: View {
                 toolbarView
             }
         }
-        .foregroundStyle(Color(Constants.defaultColor))
-        .tint(Color(Constants.defaultColor))
+        .foregroundStyle(Color(Constants.accentColor))
+        .tint(Color(Constants.accentColor))
         .environmentObject(hapticEngine)
     }
 

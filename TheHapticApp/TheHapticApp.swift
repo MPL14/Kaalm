@@ -39,7 +39,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         #if DEBUG
-        Purchases.logLevel = .debug
+        Purchases.logLevel = .error
         #endif
         Purchases.configure(withAPIKey: rcPublicApiKey)
 

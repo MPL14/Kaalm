@@ -22,7 +22,7 @@ struct SettingsView: View {
     @AppStorage(Constants.dotSize) var currentDotSize: Double = Constants.defaultDotSize
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
     @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
-    @AppStorage(Constants.myColor) var myColor: String = Constants.defaultColor
+    @AppStorage(Constants.myColor) var myColor: String = Constants.accentColor
     @AppStorage(Constants.hapticsEnabled) var hapticsEnabled: Bool = true
     @AppStorage(Constants.darkModePreferred) var darkModePreferred: Bool = false
     
@@ -79,7 +79,7 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .tint(Color(Constants.defaultColor))
+        .tint(Color(Constants.accentColor))
         .navigationTitle(viewModel.settingsViewTitle)
         .task {
             await self.viewModel.verifyPremiumUnlocked()
@@ -162,14 +162,13 @@ struct SettingsView: View {
             .accessibilityElement(children: .combine)
             .accessibilityValue("\(Int(currentGridRows)) grid rows")
             
-            
             VStack(alignment: .leading, spacing: 2) {
                 Text(viewModel.gridColsTitle + ", \(Int(currentGridCols))")
                 Slider(value: $currentGridCols, in: Constants.minGridSize...Constants.maxGridSize)
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("\(Int(currentGridCols)) grid columns")
-            
+
             VStack(alignment: .leading, spacing: 2) {
                 Text(viewModel.gridDotSizeTitle + ", \(String(format: "%.1f", currentDotSize))")
                 Slider(value: $currentDotSize, in: Constants.minDotSize...Constants.maxDotSize)
@@ -205,7 +204,7 @@ struct SettingsView: View {
                 CustomColorPicker(selectedColor: $myColor)
                     .colors(
                         [
-                            Constants.defaultColor,
+                            Constants.charcoalColor,
                             Constants.clayColor,
                             Constants.sageColor,
                             Constants.oceanColor,
@@ -214,7 +213,7 @@ struct SettingsView: View {
                         ]
                     )
                     .title("Grid Color")
-                    .highlightColor(Color(Constants.defaultColor))
+                    .highlightColor(Color(Constants.accentColor))
             }
         }
         .disabled(
