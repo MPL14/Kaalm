@@ -36,13 +36,13 @@ struct MainView: View {
 //                    .dotColor(Color(myColor))
 //                    .feedback(feedbackIntensity, feedbackSharpness)
                 GeometryReader { geo in
-                    HapticGridUIKit(frame: geo.size)
-                        .scaleEffect(gridScale, anchor: .center)
-                        .onAppear {
-                            withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
-                                gridScale = CGSize(width: 1.0, height: 1.0)
-                            }
-                        }
+                    HapticGridUIKit<HapticEngine>(frame: geo.size)
+//                        .scaleEffect(gridScale, anchor: .center)
+//                        .onAppear {
+//                            withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
+//                                gridScale = CGSize(width: 1.0, height: 1.0)
+//                            }
+//                        }
                         .accessibilityElement(children: .combine)
                         .accessibilityLabel("Haptic Dot Grid")
                         .accessibilityHint("Plays haptics as you touch and drag.")

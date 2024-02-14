@@ -41,6 +41,7 @@
 		4465D2BC2B642C6000BD0B01 /* HapticGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2BB2B642C6000BD0B01 /* HapticGrid.swift */; };
 		4465D2C02B64320E00BD0B01 /* GridPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2BF2B64320E00BD0B01 /* GridPoint.swift */; };
 		4465D2C22B6433AF00BD0B01 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2C12B6433AF00BD0B01 /* CGRect-Extensions.swift */; };
+		44AAFF052B7D3CF500FA908F /* HapticDotUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AAFF042B7D3CF500FA908F /* HapticDotUIKit.swift */; };
 		44BB04372B63169600865B00 /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB04362B63169600865B00 /* RubberBanding.swift */; };
 		44BB043B2B631B0E00865B00 /* SwipeToUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */; };
 		44E2090D2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2090C2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift */; };
@@ -103,6 +104,7 @@
 		4465D2BB2B642C6000BD0B01 /* HapticGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGrid.swift; sourceTree = "<group>"; };
 		4465D2BF2B64320E00BD0B01 /* GridPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPoint.swift; sourceTree = "<group>"; };
 		4465D2C12B6433AF00BD0B01 /* CGRect-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect-Extensions.swift"; sourceTree = "<group>"; };
+		44AAFF042B7D3CF500FA908F /* HapticDotUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticDotUIKit.swift; sourceTree = "<group>"; };
 		44BB04362B63169600865B00 /* RubberBanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToUnlock.swift; sourceTree = "<group>"; };
 		44E2090C2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticAppSettingsScreenUITests.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				44490C852B7AE6A400C185B9 /* HapticGridUIKit.swift */,
+				44AAFF042B7D3CF500FA908F /* HapticDotUIKit.swift */,
 			);
 			path = HapticGridUIKit;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				443ED9332B6C3E0A00FF9FE6 /* AboutView.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
+				44AAFF052B7D3CF500FA908F /* HapticDotUIKit.swift in Sources */,
 				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
 				440B74472B6984650060974A /* MailView.swift in Sources */,
 			);
