@@ -64,7 +64,6 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             UIView.animate(withDuration: 0.6, delay: 0.25, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.5) {
                 uiView.transform = CGAffineTransform(scaleX: 1, y: 1)
             } completion: { _ in
-                uiView.layer.shouldRasterize = false
                 didAppear = true
             }
         }
