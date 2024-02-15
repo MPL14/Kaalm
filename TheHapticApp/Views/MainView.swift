@@ -17,7 +17,6 @@ struct MainView: View {
     // settingsViewModel to be reinitialized a ton. Initializing it here
     // then passing it to SettingsView below solves this issue.
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()
-    @State private var gridScale: CGSize = .zero
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
     @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
@@ -36,18 +35,8 @@ struct MainView: View {
 //                    .dotColor(Color(myColor))
 //                    .feedback(feedbackIntensity, feedbackSharpness)
                 GeometryReader { geo in
-                    HapticGridUIKit<HapticEngine>(frame: geo.size)
-//                        .scaleEffect(gridScale, anchor: .center)
-//                        .onAppear {
-//                            withAnimation(.spring(duration: 0.6, bounce: 0.4)) {
-//                                gridScale = CGSize(width: 1.0, height: 1.0)
-//                            }
-//                        }
-                        .accessibilityElement(children: .combine)
-                        .accessibilityLabel("Haptic Dot Grid")
-                        .accessibilityHint("Plays haptics as you touch and drag.")
-                        .accessibilityAddTraits(.allowsDirectInteraction)
-                        .accessibilityIdentifier("hapticGrid")
+                    HapticGridUIKit<HapticEngine>()
+                        .size(frame: geo.size)
                 }
             }
             .padding()
