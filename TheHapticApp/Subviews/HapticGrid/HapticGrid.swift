@@ -84,16 +84,15 @@ struct HapticGrid<H: HapticPlaying>: View {
             DragGesture(minimumDistance: 0, coordinateSpace: .global)
                 .onChanged { dragValue in
                     if let touchedDotData = hapticDotData.first(where: { $0.bounds.contains(dragValue.location) }) {
+                        hapticEngine.asyncPlayHaptic(
+                            intensity: feedbackIntensity, sharpness: feedbackSharpness
+                        )
+
                         // Don't perform the animation if this haptic dot
                         // is still in touchedGridPoints, i.e. slow drag.
                         if !touchedGridPoints.contains(touchedDotData.gridPoint) {
                             withAnimation(.linear(duration: colorAnimationDuration)) {
-                                let insertion = touchedGridPoints.insert(touchedDotData.gridPoint)
-                                if insertion.inserted {
-                                    hapticEngine.asyncPlayHaptic(
-                                        intensity: feedbackIntensity, sharpness: feedbackSharpness
-                                    )
-                                }
+                                let _ = touchedGridPoints.insert(touchedDotData.gridPoint)
                             }
 
                             DispatchQueue.main.asyncAfter(deadline: .now() + colorAnimationDuration) {

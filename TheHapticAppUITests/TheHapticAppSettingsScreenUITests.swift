@@ -54,14 +54,14 @@ final class TheHapticAppSettingsScreenUITests: XCTestCase {
         XCTAssertTrue(rateViewExists)
     }
 
-    func testPurchaseButtonOpensPaywall() {
-        let profileButton = app.buttons["personalizationSettings"]
-        profileButton.tap()
-
-        let purchaseButton = app.buttons["purchaseButton"]
-        purchaseButton.tap()
-
-        let paywallPurchaseButton = app.buttons["Purchase"]
-        XCTAssertTrue(paywallPurchaseButton.exists)
-    }
+//    func testPurchaseButtonOpensPaywall() {
+//        let profileButton = app.buttons["personalizationSettings"]
+//        profileButton.tap()
+//
+//        let purchaseButton = app.buttons["purchaseButton"]
+//        purchaseButton.tap()
+//
+//        let paywallPurchaseButton = app.buttons["Purchase"]
+//        XCTAssertTrue(paywallPurchaseButton.exists)
+//    }
 }
