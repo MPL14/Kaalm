@@ -9,7 +9,7 @@
 			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
 			<key>NSPrivacyAccessedAPITypeReasons</key>
 			<array>
-				<string>CA92.1 Access and write info only related to this app (theme settings), per documentation.</string>
+				<string>CA92.1</string>
 			</array>
 		</dict>
 	</array>
