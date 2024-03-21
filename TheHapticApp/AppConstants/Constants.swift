@@ -36,7 +36,7 @@ struct Constants {
     // MARK: - Stock Color Assets
     static let backgroundColor: String = "Background"
     static let accentColor: String = "Default"
-    static let chalkColor: String = "Chalk"
+    static let grayColor: String = "Gray"
     static let charcoalColor: String = "Charcoal"
     static let deepBlueColor: String = "Deep Blue"
     static let roseColor: String = "Rose"
