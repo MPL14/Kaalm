@@ -35,6 +35,7 @@
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
 		4450CA182B685652008093B6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA172B685652008093B6 /* Secrets.swift */; };
 		4458A7812BACA8440014419D /* NavigationBar-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458A7802BACA8440014419D /* NavigationBar-Extensions.swift */; };
+		4458A7832BACBAD00014419D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4458A7822BACBAD00014419D /* PrivacyInfo.xcprivacy */; };
 		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
 		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
 		4465D2B82B642A4900BD0B01 /* HapticDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B72B642A4900BD0B01 /* HapticDot.swift */; };
@@ -100,6 +101,7 @@
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4450CA172B685652008093B6 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		4458A7802BACA8440014419D /* NavigationBar-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar-Extensions.swift"; sourceTree = "<group>"; };
+		4458A7822BACBAD00014419D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4465D2B22B64139F00BD0B01 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
 		4465D2B72B642A4900BD0B01 /* HapticDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticDot.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		441B218A2B62332300CF4DFF = {
 			isa = PBXGroup;
 			children = (
+				4458A7822BACBAD00014419D /* PrivacyInfo.xcprivacy */,
 				442F97C92B72CB720061C724 /* TheHapticAppStoreKit.xctestplan */,
 				440B744E2B6997590060974A /* Localizable.xcstrings */,
 				4450CA042B684DDA008093B6 /* Configuration.storekit */,
@@ -436,6 +439,7 @@
 				440B744F2B6997590060974A /* Localizable.xcstrings in Resources */,
 				441B219E2B62332400CF4DFF /* Preview Assets.xcassets in Resources */,
 				4450CA052B684DDA008093B6 /* Configuration.storekit in Resources */,
+				4458A7832BACBAD00014419D /* PrivacyInfo.xcprivacy in Resources */,
 				441B219B2B62332400CF4DFF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
