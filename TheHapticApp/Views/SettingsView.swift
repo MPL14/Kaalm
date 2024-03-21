@@ -168,7 +168,7 @@ struct SettingsView: View {
             }
             .accessibilityElement(children: .combine)
             .accessibilityValue("\(Int(currentGridCols)) grid columns")
-
+            
             VStack(alignment: .leading, spacing: 2) {
                 Text(viewModel.gridDotSizeTitle + ", \(String(format: "%.1f", currentDotSize))")
                 Slider(value: $currentDotSize, in: Constants.minDotSize...Constants.maxDotSize)
@@ -205,11 +205,11 @@ struct SettingsView: View {
                     .colors(
                         [
                             Constants.charcoalColor,
-                            Constants.clayColor,
-                            Constants.sageColor,
-                            Constants.oceanColor,
+                            Constants.deepBlueColor,
+                            Constants.silverColor,
                             Constants.roseColor,
-                            Constants.wineColor
+                            Constants.sageColor,
+                            Constants.chalkColor
                         ]
                     )
                     .title("Grid Color")

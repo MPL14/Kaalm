@@ -32,6 +32,7 @@ struct CustomColorPicker<ColorShape: Shape>: View {
             ForEach(colors, id: \.hashValue) { color in
                 colorShape
                     .fill(isEnabled ? Color(color) : Color(color).opacity(0.5))
+                    .shadow(radius: 1)
                     .frame(width: colorShapeSize.width, height: colorShapeSize.height)
                     .overlay {
                         if selectedColor == color {
@@ -118,5 +119,13 @@ struct CustomColorPicker<ColorShape: Shape>: View {
         var view = self
         view.highlightColor = color
         return view
+    }
+}
+
+#Preview {
+    NavigationStack {
+        SettingsView(SettingsViewModel())
+            .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(HapticEngine())
     }
 }

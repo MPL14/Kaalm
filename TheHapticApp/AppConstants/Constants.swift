@@ -36,12 +36,12 @@ struct Constants {
     // MARK: - Stock Color Assets
     static let backgroundColor: String = "Background"
     static let accentColor: String = "Default"
+    static let chalkColor: String = "Chalk"
     static let charcoalColor: String = "Charcoal"
-    static let clayColor: String = "Clay"
-    static let oceanColor: String = "Ocean"
+    static let deepBlueColor: String = "Deep Blue"
     static let roseColor: String = "Rose"
     static let sageColor: String = "Sage"
-    static let wineColor: String = "Wine"
+    static let silverColor: String = "Silver"
 
     // MARK: - RevenueCat Premium Entitlement
     static var premiumEntitlement: String = "TheHapticApp.Premium"
