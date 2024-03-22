@@ -19,10 +19,6 @@ extension Color {
 extension UIColor {
     /// Initialize a random pastel UIColor.
     static var randomPastel: UIColor {
-//        return .init(red: .random(in: 0...1.0),
-//                     green: .random(in: 0...1.0),
-//                     blue: .random(in: 0...1.0),
-//                     alpha: 1.0)
         return .init(hue: .random(in: 0...1.0),
                      saturation: 0.3,
                      brightness: 0.8,

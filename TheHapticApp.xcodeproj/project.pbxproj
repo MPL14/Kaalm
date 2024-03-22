@@ -34,7 +34,6 @@
 		4450CA0C2B685069008093B6 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4450CA0B2B685069008093B6 /* RevenueCatUI */; };
 		4450CA0F2B68507E008093B6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4450CA0E2B68507E008093B6 /* StoreKit.framework */; };
 		4450CA182B685652008093B6 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4450CA172B685652008093B6 /* Secrets.swift */; };
-		4458A7812BACA8440014419D /* NavigationBar-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4458A7802BACA8440014419D /* NavigationBar-Extensions.swift */; };
 		4458A7832BACBAD00014419D /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4458A7822BACBAD00014419D /* PrivacyInfo.xcprivacy */; };
 		4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B02B64093300BD0B01 /* OnboardingView.swift */; };
 		4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2B22B64139F00BD0B01 /* Shimmer.swift */; };
@@ -45,6 +44,8 @@
 		4465D2C22B6433AF00BD0B01 /* CGRect-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465D2C12B6433AF00BD0B01 /* CGRect-Extensions.swift */; };
 		44AAFF052B7D3CF500FA908F /* HapticDotUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AAFF042B7D3CF500FA908F /* HapticDotUIKit.swift */; };
 		44AAFF092B7D3FAD00FA908F /* HapticGridUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AAFF082B7D3FAD00FA908F /* HapticGridUIKit.swift */; };
+		44B5FBBF2BADFC59003A1D91 /* EnvironmentValues-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5FBBE2BADFC59003A1D91 /* EnvironmentValues-Extensions.swift */; };
+		44B5FBC12BAE1525003A1D91 /* View-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5FBC02BAE1525003A1D91 /* View-Extensions.swift */; };
 		44BB04372B63169600865B00 /* RubberBanding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB04362B63169600865B00 /* RubberBanding.swift */; };
 		44BB043B2B631B0E00865B00 /* SwipeToUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */; };
 		44E2090D2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2090C2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift */; };
@@ -100,7 +101,6 @@
 		4450CA0E2B68507E008093B6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4450CA152B6854AA008093B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4450CA172B685652008093B6 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		4458A7802BACA8440014419D /* NavigationBar-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar-Extensions.swift"; sourceTree = "<group>"; };
 		4458A7822BACBAD00014419D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		4465D2B02B64093300BD0B01 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		4465D2B22B64139F00BD0B01 /* Shimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shimmer.swift; sourceTree = "<group>"; };
@@ -111,6 +111,8 @@
 		4465D2C12B6433AF00BD0B01 /* CGRect-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect-Extensions.swift"; sourceTree = "<group>"; };
 		44AAFF042B7D3CF500FA908F /* HapticDotUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticDotUIKit.swift; sourceTree = "<group>"; };
 		44AAFF082B7D3FAD00FA908F /* HapticGridUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticGridUIKit.swift; sourceTree = "<group>"; };
+		44B5FBBE2BADFC59003A1D91 /* EnvironmentValues-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues-Extensions.swift"; sourceTree = "<group>"; };
+		44B5FBC02BAE1525003A1D91 /* View-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-Extensions.swift"; sourceTree = "<group>"; };
 		44BB04362B63169600865B00 /* RubberBanding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubberBanding.swift; sourceTree = "<group>"; };
 		44BB043A2B631B0E00865B00 /* SwipeToUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToUnlock.swift; sourceTree = "<group>"; };
 		44E2090C2B741E3B00478687 /* TheHapticAppSettingsScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheHapticAppSettingsScreenUITests.swift; sourceTree = "<group>"; };
@@ -241,7 +243,8 @@
 				4465D2C12B6433AF00BD0B01 /* CGRect-Extensions.swift */,
 				440B74482B69865D0060974A /* Bundle-Extensions.swift */,
 				442F97BA2B72B8EA0061C724 /* Purchases-Extension.swift */,
-				4458A7802BACA8440014419D /* NavigationBar-Extensions.swift */,
+				44B5FBBE2BADFC59003A1D91 /* EnvironmentValues-Extensions.swift */,
+				44B5FBC02BAE1525003A1D91 /* View-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				4465D2BA2B642B0400BD0B01 /* HapticDotPreferenceKey.swift in Sources */,
 				441B21B52B62BB7C00CF4DFF /* Color-Extensions.swift in Sources */,
 				4465D2C22B6433AF00BD0B01 /* CGRect-Extensions.swift in Sources */,
+				44B5FBC12BAE1525003A1D91 /* View-Extensions.swift in Sources */,
 				440157F32B6AC71F00AD2EC3 /* Constants.swift in Sources */,
 				44F855B02B68138000081920 /* ColorPicker.swift in Sources */,
 				441B21B22B62BB2200CF4DFF /* MainView.swift in Sources */,
@@ -487,11 +491,11 @@
 				44BB04372B63169600865B00 /* RubberBanding.swift in Sources */,
 				443ED9312B6C32A300FF9FE6 /* LinkListButton.swift in Sources */,
 				44490C862B7AE6A400C185B9 /* HapticGridUIView.swift in Sources */,
-				4458A7812BACA8440014419D /* NavigationBar-Extensions.swift in Sources */,
 				443ED92F2B6C176A00FF9FE6 /* SettingsView.swift in Sources */,
 				441B21B82B62D87900CF4DFF /* HapticPlaying.swift in Sources */,
 				443ED9332B6C3E0A00FF9FE6 /* AboutView.swift in Sources */,
 				4465D2B32B64139F00BD0B01 /* Shimmer.swift in Sources */,
+				44B5FBBF2BADFC59003A1D91 /* EnvironmentValues-Extensions.swift in Sources */,
 				44AAFF052B7D3CF500FA908F /* HapticDotUIKit.swift in Sources */,
 				4465D2B12B64093300BD0B01 /* OnboardingView.swift in Sources */,
 				440B74472B6984650060974A /* MailView.swift in Sources */,

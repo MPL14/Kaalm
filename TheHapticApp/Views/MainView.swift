@@ -28,12 +28,6 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                HapticGrid<HapticEngine>()
-//                    .gridDimensions(Int(currentGridRows), Int(currentGridCols))
-//                    .dotSize(CGFloat(currentDotSize))
-//                    .dotPadding(3)
-//                    .dotColor(Color(myColor))
-//                    .feedback(feedbackIntensity, feedbackSharpness)
                 GeometryReader { geo in
                     HapticGridUIKit<HapticEngine>()
                         .size(frame: geo.size)
@@ -45,9 +39,9 @@ struct MainView: View {
             .toolbar {
                 toolbarView
             }
+            .toolbarTitle(Text("The Haptic App"), color: Color(myColor))
         }
-        .foregroundStyle(Color(Constants.accentColor))
-        .tint(Color(Constants.accentColor))
+        .accentColor(Color(myColor))
         .environmentObject(hapticEngine)
     }
 

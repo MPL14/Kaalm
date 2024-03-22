@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AboutView: View {
+    @AppStorage(Constants.myColor) var myColor: String = Constants.accentColor
+
     private let aboutText: String = String(localized:
     """
     The Haptic App is intended to allow for a quick \
@@ -48,7 +50,7 @@ struct AboutView: View {
             }
             .padding(.vertical)
         }
-        .navigationTitle("About")
+        .toolbarTitle(Text("Settings"), color: Color(myColor))
     }
 }
 

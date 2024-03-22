@@ -100,6 +100,10 @@ final class SettingsViewModel: ObservableObject {
     }
 
     @MainActor public func verifyPremiumUnlocked(_ entitlement: String = Constants.premiumEntitlement) async {
-        self.isPremiumUnlocked = await purchaseEngine.verifyPremiumUnlocked(entitlement)
+        if EnvironmentValues.isPreview {
+            self.isPremiumUnlocked = true
+        } else {
+            self.isPremiumUnlocked = await purchaseEngine.verifyPremiumUnlocked(entitlement)
+        }
     }
 }

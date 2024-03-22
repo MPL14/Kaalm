@@ -79,7 +79,6 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .tint(Color(Constants.accentColor))
         .navigationTitle(viewModel.settingsViewTitle)
         .task {
             await self.viewModel.verifyPremiumUnlocked()
@@ -106,6 +105,7 @@ struct SettingsView: View {
         } message: {
             Text(viewModel.alertMessage)
         }
+        .toolbarTitle(Text("Settings"), color: Color(myColor))
     }
 
     // MARK: - Subviews

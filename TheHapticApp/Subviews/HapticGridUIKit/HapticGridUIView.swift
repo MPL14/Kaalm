@@ -4,11 +4,13 @@ import UIKit
 struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: H
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
     @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
     @AppStorage(Constants.dotSize) var currentDotSize: Double = Constants.defaultDotSize
     @AppStorage(Constants.myColor) var myColor: String = Constants.accentColor
+    @AppStorage(Constants.darkModePreferred) var darkModePreferred: Bool = false
     @AppStorage(Constants.feedbackIntensity) var feedbackIntensity: Double = 1.0
     @AppStorage(Constants.feedbackSharpness) var feedbackSharpness: Double = 1.0
 
@@ -20,6 +22,8 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             feedbackIntensity: feedbackIntensity,
             feedbackSharpness: feedbackSharpness,
             gridColor: myColor,
+            darkModePreferred: darkModePreferred,
+            colorScheme: colorScheme,
             dotSize: currentDotSize,
             currentGridRows: currentGridRows,
             currentGridCols: currentGridCols,
@@ -47,9 +51,12 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
+        print("refreshing grid")
         context.coordinator.feedbackIntensity = self.feedbackIntensity
         context.coordinator.feedbackSharpness = self.feedbackSharpness
         context.coordinator.gridColor = self.myColor
+        context.coordinator.darkModePreferred = self.darkModePreferred
+        context.coordinator.colorScheme = self.colorScheme
         context.coordinator.currentGridRows = self.currentGridRows
         context.coordinator.currentGridCols = self.currentGridCols
         context.coordinator.dotSize = self.currentDotSize
@@ -75,6 +82,8 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
         var currentGridCols: Double
         var dotSize: Double
         var gridColor: String
+        var darkModePreferred: Bool
+        var colorScheme: ColorScheme
         var feedbackIntensity: CGFloat
         var feedbackSharpness: CGFloat
 
@@ -86,6 +95,8 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             feedbackIntensity: CGFloat,
             feedbackSharpness: CGFloat,
             gridColor: String,
+            darkModePreferred: Bool,
+            colorScheme: ColorScheme,
             dotSize: Double,
             currentGridRows: Double,
             currentGridCols: Double,
@@ -94,6 +105,8 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             self.feedbackIntensity = feedbackIntensity
             self.feedbackSharpness = feedbackSharpness
             self.gridColor = gridColor
+            self.darkModePreferred = darkModePreferred
+            self.colorScheme = colorScheme
             self.dotSize = dotSize
             self.currentGridRows = currentGridRows
             self.currentGridCols = currentGridCols

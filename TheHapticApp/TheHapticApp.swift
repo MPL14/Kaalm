@@ -28,7 +28,7 @@ struct TheHapticApp: App {
             }
             .animation(.easeIn, value: self.onboardingComplete)
             .transition(.opacity)
-            .preferredColorScheme(darkModePreferred ? .dark : .light)
+            .preferredColorScheme(darkModePreferred ? .dark : nil)
             .environmentObject(hapticEffects)
         }
     }
