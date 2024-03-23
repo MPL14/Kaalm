@@ -4,7 +4,7 @@ import UIKit
 struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
     // MARK: - Environment
     @EnvironmentObject private var hapticEngine: H
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
+//    @Environment(\.colorScheme) var colorScheme: ColorScheme
 
     @AppStorage(Constants.gridRows) var currentGridRows: Double = Constants.defaultGridSize
     @AppStorage(Constants.gridCols) var currentGridCols: Double = Constants.defaultGridSize
@@ -23,7 +23,6 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             feedbackSharpness: feedbackSharpness,
             gridColor: myColor,
             darkModePreferred: darkModePreferred,
-            colorScheme: colorScheme,
             dotSize: currentDotSize,
             currentGridRows: currentGridRows,
             currentGridCols: currentGridCols,
@@ -56,7 +55,7 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
         context.coordinator.feedbackSharpness = self.feedbackSharpness
         context.coordinator.gridColor = self.myColor
         context.coordinator.darkModePreferred = self.darkModePreferred
-        context.coordinator.colorScheme = self.colorScheme
+//        context.coordinator.colorScheme = self.colorScheme
         context.coordinator.currentGridRows = self.currentGridRows
         context.coordinator.currentGridCols = self.currentGridCols
         context.coordinator.dotSize = self.currentDotSize
@@ -83,7 +82,7 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
         var dotSize: Double
         var gridColor: String
         var darkModePreferred: Bool
-        var colorScheme: ColorScheme
+//        var colorScheme: ColorScheme
         var feedbackIntensity: CGFloat
         var feedbackSharpness: CGFloat
 
@@ -96,7 +95,7 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             feedbackSharpness: CGFloat,
             gridColor: String,
             darkModePreferred: Bool,
-            colorScheme: ColorScheme,
+//            colorScheme: ColorScheme,
             dotSize: Double,
             currentGridRows: Double,
             currentGridCols: Double,
@@ -106,7 +105,7 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
             self.feedbackSharpness = feedbackSharpness
             self.gridColor = gridColor
             self.darkModePreferred = darkModePreferred
-            self.colorScheme = colorScheme
+//            self.colorScheme = colorScheme
             self.dotSize = dotSize
             self.currentGridRows = currentGridRows
             self.currentGridCols = currentGridCols
@@ -151,7 +150,8 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
                     circleLayer.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: circleDiameter, height: circleDiameter)).cgPath
                     circleView.layer.mask = circleLayer
 
-                    circleView.layer.backgroundColor = UIColor(named: gridColor)?.cgColor
+                    circleView.backgroundColor = UIColor(named: gridColor)
+
                     // Give the circles a tag of 1 so we can identify them for hit testing.
                     circleView.tag = 1
 
@@ -170,13 +170,13 @@ struct HapticGridUIView<H: HapticPlaying>: UIViewRepresentable {
                 if hitView.tag == 1 && selectedCircle != hitView {
                     // Update the color of the current circle.
                     UIView.animate(withDuration: 0.25) {
-                        hitView.layer.backgroundColor = UIColor.randomPastel.cgColor
+                        hitView.backgroundColor = UIColor.randomPastel
                         hitView.layer.opacity = 1.0
                     }
 
                     // Animate back to normal color.
                     UIView.animate(withDuration: 0.25, delay: 0.5) {
-                        hitView.layer.backgroundColor = UIColor(named: self.gridColor)?.cgColor
+                        hitView.backgroundColor = UIColor(named: self.gridColor)
                         hitView.layer.opacity = 1.0
                     }
 

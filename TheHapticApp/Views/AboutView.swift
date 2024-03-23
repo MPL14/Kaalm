@@ -50,7 +50,7 @@ struct AboutView: View {
             }
             .padding(.vertical)
         }
-        .toolbarTitle(Text("Settings"), color: Color(myColor))
+        .toolbarTitle(Text("About"), color: Color(myColor))
     }
 }
 
