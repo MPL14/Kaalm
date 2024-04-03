@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:TheHapticApp.xcodeproj",
       "identifier" : "441B21922B62332300CF4DFF",
