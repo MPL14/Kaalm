@@ -2,8 +2,7 @@
 //  MailView.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/30/24.
-//
+
 
 import MessageUI
 import SwiftUI

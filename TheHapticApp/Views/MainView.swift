@@ -2,8 +2,7 @@
 //  MainView.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/25/24.
-//
+
 
 import SwiftUI
 
@@ -13,7 +12,7 @@ struct MainView: View {
 
     // MARK: - State
     // The Settings view has sliders which update AppStorage values
-    // which obviously are also used here. Updating them causes the
+    // which are also used here. Updating them causes the
     // settingsViewModel to be reinitialized a ton. Initializing it here
     // then passing it to SettingsView below solves this issue.
     @StateObject private var settingsViewModel: SettingsViewModel = SettingsViewModel()

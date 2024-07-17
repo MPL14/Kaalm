@@ -13,9 +13,6 @@
     "About" : {
 
     },
-    "Calm through haptics." : {
-
-    },
     "Change the color of the haptic grid." : {
 
     },
@@ -26,6 +23,9 @@
 
     },
     "Customize" : {
+
+    },
+    "Donate $0.99 to keep the project running" : {
 
     },
     "Dot Size" : {
@@ -94,9 +94,6 @@
     "Privacy Policy" : {
 
     },
-    "Purchase Premium for $0.99 to Unlock" : {
-
-    },
     "Rate The Haptic App" : {
 
     },
@@ -115,13 +112,13 @@
     "Support Website" : {
 
     },
+    "Swipe" : {
+
+    },
     "Swipe to Open" : {
 
     },
     "Swipe to the right on this view to unlock." : {
-
-    },
-    "Swipe to Unlock" : {
 
     },
     "The grid color is %@." : {

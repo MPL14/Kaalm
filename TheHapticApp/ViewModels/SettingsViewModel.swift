@@ -2,8 +2,7 @@
 //  SettingsViewModel.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/30/24.
-//
+
 
 import MessageUI
 import RevenueCat
@@ -51,7 +50,7 @@ final class SettingsViewModel: ObservableObject {
     public let preferDarkModeTitle: String = String(localized: "Prefer Dark Mode")
 
     public let premiumEnabledTitle: String = String(localized: "Premium Enabled")
-    public let premiumNotEnabledTitle: String = String(localized: "Purchase Premium for $0.99 to Unlock")
+    public let premiumNotEnabledTitle: String = String(localized: "Support Kaalm for $0.99 one time ")
 
     // Alert Texts
     public let mailErrorMessageTitle: String = String(localized: "Error sending mail")

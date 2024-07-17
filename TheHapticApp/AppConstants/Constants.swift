@@ -2,8 +2,7 @@
 //  Constants.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/31/24.
-//
+
 
 import Foundation
 

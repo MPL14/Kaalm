@@ -2,8 +2,7 @@
 //  SettingsView.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/30/24.
-//
+
 
 import MessageUI
 import RevenueCat
@@ -216,8 +215,12 @@ struct SettingsView: View {
                     .highlightColor(Color(Constants.accentColor))
             }
         }
+        //Previus code to make changing colors premium. Also if you want to c
+        // .disabled(
+        //!self.viewModel.isPremiumUnlocked  was switched to false
+        
         .disabled(
-            !self.viewModel.isPremiumUnlocked
+           false
         )
     }
 

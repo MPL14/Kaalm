@@ -2,7 +2,6 @@
 //  TheHapticAppApp.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/25/24.
 //
 
 import RevenueCat
@@ -20,11 +19,9 @@ struct TheHapticApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                if onboardingComplete {
+              
                     MainView()
-                } else {
-                    OnboardingView()
-                }
+               
             }
             .animation(.easeIn, value: self.onboardingComplete)
             .transition(.opacity)

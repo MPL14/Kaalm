@@ -1,9 +1,8 @@
 //
 //  Shimmer.swift
 //  TheHapticApp
-//
-//  Created by Giorgio Latour on 1/26/24.
-//
+//We we no longer need this 
+
 
 import SwiftUI
 

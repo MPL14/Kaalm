@@ -2,8 +2,7 @@
 //  NewSwipeToUnlock.swift
 //  TheHapticApp
 //
-//  Created by Giorgio Latour on 1/25/24.
-//
+// make sure to remove this we no longer need this screen
 
 import SwiftUI
 
@@ -74,7 +73,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                     if self.sliderOffset != newSliderOffset {
                         hapticEngine.asyncPlayHaptic(
                             intensity: CGFloat(self.sliderOffset) / CGFloat(gridDim.1 / 2),
-                            sharpness: 2
+                            sharpness: 4
                         )
                         // should make this get stronger as sliderOffset increases
                         self.sliderOffset = newSliderOffset
@@ -84,7 +83,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                     // If gesture didn't complete.
                     if self.sliderOffset < gridDim.1 - sliderWidth {
                         // Hacky way to animate the integer sliderOffset.
-                        let animationDuration = 0.009
+                        let animationDuration = 0.010
                         for i in stride(from: 0, to: self.sliderOffset, by: 1) {
                             withAnimation(
                                 .linear(duration: animationDuration).delay(animationDuration * Double(i))
@@ -98,7 +97,7 @@ struct SwipeToUnlock<H: HapticPlaying>: View, Animatable {
                 }
         )
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Swipe to Unlock")
+        .accessibilityLabel("Swipe")
         .accessibilityHint("Swipe to the right on this view to unlock.")
         .accessibilityAddTraits(.allowsDirectInteraction)
         .accessibilityIdentifier("swipeToUnlock")
